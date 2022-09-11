@@ -34,7 +34,7 @@ public class TelaNewP extends javax.swing.JInternalFrame {
         lblFoto = new javax.swing.JLabel();
         btnCadastrar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnFoto = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Adicionar um Novo Profissional");
@@ -71,13 +71,13 @@ public class TelaNewP extends javax.swing.JInternalFrame {
         btnCadastrar.setText("Cadastrar");
 
         btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+
+        btnFoto.setText("Escolha um arquivo");
+        btnFoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                btnFotoActionPerformed(evt);
             }
         });
-
-        jButton1.setText("Escolha um arquivo");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -103,7 +103,7 @@ public class TelaNewP extends javax.swing.JInternalFrame {
                                 .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
                                 .addComponent(txtEndereco)
                                 .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton1))))
+                            .addComponent(btnFoto))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -126,7 +126,7 @@ public class TelaNewP extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFoto)
-                    .addComponent(jButton1))
+                    .addComponent(btnFoto))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrar)
@@ -158,20 +158,19 @@ public class TelaNewP extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEnderecoActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
     private void txtTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelActionPerformed
+
+    private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFotoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnFoto;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblEndereco;
     private javax.swing.JLabel lblFoto;

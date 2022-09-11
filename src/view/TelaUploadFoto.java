@@ -1,18 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
-/**
- *
- * @author mkopa
- */
 public class TelaUploadFoto extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaUploadFoto
-     */
     public TelaUploadFoto() {
         initComponents();
     }
