@@ -34,6 +34,8 @@ public class TelaUploadFoto extends javax.swing.JFrame {
         jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
         jPanel1.setMinimumSize(new java.awt.Dimension(600, 450));
 
+        jFileChooser1.setApproveButtonText("Abrir");
+        jFileChooser1.setMaximumSize(new java.awt.Dimension(1920, 1080));
         jFileChooser1.setMinimumSize(new java.awt.Dimension(600, 450));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
