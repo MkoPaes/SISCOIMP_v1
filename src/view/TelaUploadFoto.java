@@ -1,11 +1,18 @@
 package view;
 
 public class TelaUploadFoto extends javax.swing.JFrame {
-
-    public TelaUploadFoto() {
+    private static TelaUploadFoto instance;
+    
+    // Construtor - Singleton
+    private TelaUploadFoto() {
         initComponents();
     }
-
+    
+    public static TelaUploadFoto getInstancia() {
+        if(instance == null)
+            instance = new TelaUploadFoto();
+        return instance;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -1,11 +1,15 @@
 package view;
 
+import utils.GerenciadorJanelas;
+
 public class TelaNewP extends javax.swing.JInternalFrame {
     private static TelaNewP instance;
+    private GerenciadorJanelas gerenciador;
 
     // Construtor - Singleton
     private TelaNewP() {
         initComponents();
+        this.gerenciador = new GerenciadorJanelas();
     }
     
     public static TelaNewP getInstancia() {
@@ -32,9 +36,9 @@ public class TelaNewP extends javax.swing.JInternalFrame {
         lblTel = new javax.swing.JLabel();
         txtTel = new javax.swing.JTextField();
         lblFoto = new javax.swing.JLabel();
+        btnFoto = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        btnFoto = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Adicionar um Novo Profissional");
@@ -68,14 +72,24 @@ public class TelaNewP extends javax.swing.JInternalFrame {
 
         lblFoto.setText("Foto");
 
-        btnCadastrar.setText("Cadastrar");
-
-        btnCancelar.setText("Cancelar");
-
         btnFoto.setText("Escolha um arquivo");
         btnFoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFotoActionPerformed(evt);
+            }
+        });
+
+        btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -151,20 +165,24 @@ public class TelaNewP extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void txtEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtEnderecoActionPerformed
 
     private void txtTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtTelActionPerformed
 
     private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
-        // TODO add your handling code here:
+        gerenciador.abrirFrame(TelaUploadFoto.getInstancia());
     }//GEN-LAST:event_btnFotoActionPerformed
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+    }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

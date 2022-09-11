@@ -1,6 +1,7 @@
 package utils;
 
 import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 public class GerenciadorJanelas {
@@ -10,6 +11,8 @@ public class GerenciadorJanelas {
         GerenciadorJanelas.jdp = jdp;
     }
     
+    public GerenciadorJanelas(){}
+    
     public void abrirJanela (JInternalFrame jif) {
         if (jif.isVisible()){
             jif.toFront();
@@ -17,6 +20,15 @@ public class GerenciadorJanelas {
         } else {
             jdp.add(jif);
             jif.setVisible(true);
+        }
+    }
+    
+    public void abrirFrame (JFrame jf) {
+        if (jf.isVisible()){
+            jf.toFront();
+            jf.requestFocus();
+        } else {
+            jf.setVisible(true);
         }
     }
 }
