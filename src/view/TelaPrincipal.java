@@ -39,7 +39,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmExames = new javax.swing.JMenu();
         jmiNewC = new javax.swing.JMenuItem();
         jmiNewE = new javax.swing.JMenuItem();
-        jmiEditE = new javax.swing.JMenuItem();
         jmiViewE = new javax.swing.JMenuItem();
         jsA = new javax.swing.JPopupMenu.Separator();
         jmResultados = new javax.swing.JMenu();
@@ -66,6 +65,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         btnAgenda.setText("Exames/Consultas");
+        btnAgenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgendaActionPerformed(evt);
+            }
+        });
 
         btnResultados.setText("Resultados");
 
@@ -153,6 +157,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jmiViewP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/View_24px.png"))); // NOI18N
         jmiViewP.setText("Visualizar");
+        jmiViewP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiViewPActionPerformed(evt);
+            }
+        });
         jmProfissional.add(jmiViewP);
 
         jMenuBar1.add(jmProfissional);
@@ -181,12 +190,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jmExames.add(jmiNewE);
 
-        jmiEditE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Editar_24px.png"))); // NOI18N
-        jmiEditE.setText("Editar");
-        jmExames.add(jmiEditE);
-
         jmiViewE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/View_24px.png"))); // NOI18N
         jmiViewE.setText("Visualizar");
+        jmiViewE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiViewEActionPerformed(evt);
+            }
+        });
         jmExames.add(jmiViewE);
 
         jmAtendimentos.add(jmExames);
@@ -274,6 +284,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         telaViewUser.setVisible(true);
     }//GEN-LAST:event_jmiViewDActionPerformed
 
+    private void jmiViewPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiViewPActionPerformed
+        TelaViewP telaViewP = new TelaViewP(new javax.swing.JFrame(), true);
+        telaViewP.setVisible(true);
+    }//GEN-LAST:event_jmiViewPActionPerformed
+
+    private void btnAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaActionPerformed
+        TelaViewAgenda telaViewAgenda = new TelaViewAgenda(new javax.swing.JFrame(), true);
+        telaViewAgenda.setVisible(true);
+    }//GEN-LAST:event_btnAgendaActionPerformed
+
+    private void jmiViewEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiViewEActionPerformed
+        TelaViewAgenda telaViewAgenda = new TelaViewAgenda(new javax.swing.JFrame(), true);
+        telaViewAgenda.setVisible(true);
+    }//GEN-LAST:event_jmiViewEActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -322,7 +347,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jmNewD;
     private javax.swing.JMenu jmProfissional;
     private javax.swing.JMenu jmResultados;
-    private javax.swing.JMenuItem jmiEditE;
     private javax.swing.JMenuItem jmiNewC;
     private javax.swing.JMenuItem jmiNewE;
     private javax.swing.JMenuItem jmiNewF;

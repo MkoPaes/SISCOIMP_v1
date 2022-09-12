@@ -52,6 +52,8 @@ public class TelaViewP extends javax.swing.JDialog {
         btnEdit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Seus Profissionais Cadastrados");
+        setModal(true);
         setResizable(false);
 
         jPanelContato.setBorder(javax.swing.BorderFactory.createTitledBorder("Profissionais"));

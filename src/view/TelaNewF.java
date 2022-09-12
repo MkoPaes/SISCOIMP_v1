@@ -28,6 +28,7 @@ public class TelaNewF extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Adicionar contato");
+        setMinimumSize(new java.awt.Dimension(339, 136));
         setModal(true);
         setResizable(false);
 

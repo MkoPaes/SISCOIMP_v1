@@ -46,7 +46,7 @@ public class TelaNewR extends javax.swing.JDialog {
 
         lblRef.setText("Referente");
 
-        jcRef.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcRef.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
 
         lblResultados.setText("Resultados");
 

@@ -52,6 +52,7 @@ public class TelaViewUser extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Seus Dados");
+        setModal(true);
         setResizable(false);
 
         jPanelDados.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados Pessoais"));
