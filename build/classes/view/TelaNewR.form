@@ -60,7 +60,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="btnCadastrar" min="-2" pref="90" max="-2" attributes="0"/>
+                          <Component id="btnEnviar" min="-2" pref="90" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="20" max="32767" attributes="0"/>
@@ -83,7 +83,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnArquivo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnCadastrar" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEnviar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="18" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -112,19 +112,6 @@
             <Property name="text" type="java.lang.String" value="Resultados"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnArquivo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Escolher Arquivo"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnArquivoActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnCadastrar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Enviar"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="txtResultado">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
@@ -138,6 +125,22 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtResultadoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnArquivo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Escolher Arquivo"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnArquivoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnEnviar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Enviar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEnviarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -35,9 +35,9 @@ public class TelaNewR extends javax.swing.JDialog {
         lblRef = new javax.swing.JLabel();
         jcRef = new javax.swing.JComboBox<>();
         lblResultados = new javax.swing.JLabel();
-        btnArquivo = new javax.swing.JButton();
-        btnCadastrar = new javax.swing.JButton();
         txtResultado = new javax.swing.JTextField();
+        btnArquivo = new javax.swing.JButton();
+        btnEnviar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Enviar Resultado");
@@ -50,15 +50,6 @@ public class TelaNewR extends javax.swing.JDialog {
 
         lblResultados.setText("Resultados");
 
-        btnArquivo.setText("Escolher Arquivo");
-        btnArquivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnArquivoActionPerformed(evt);
-            }
-        });
-
-        btnCadastrar.setText("Enviar");
-
         txtResultado.setEditable(false);
         txtResultado.setBackground(new java.awt.Color(221, 221, 221));
         txtResultado.setForeground(new java.awt.Color(51, 51, 51));
@@ -66,6 +57,20 @@ public class TelaNewR extends javax.swing.JDialog {
         txtResultado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtResultadoActionPerformed(evt);
+            }
+        });
+
+        btnArquivo.setText("Escolher Arquivo");
+        btnArquivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArquivoActionPerformed(evt);
+            }
+        });
+
+        btnEnviar.setText("Enviar");
+        btnEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarActionPerformed(evt);
             }
         });
 
@@ -88,7 +93,7 @@ public class TelaNewR extends javax.swing.JDialog {
                                 .addComponent(txtResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(150, 150, 150)
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -105,7 +110,7 @@ public class TelaNewR extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnArquivo)
                 .addGap(18, 18, 18)
-                .addComponent(btnCadastrar)
+                .addComponent(btnEnviar)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -140,6 +145,10 @@ public class TelaNewR extends javax.swing.JDialog {
     private void txtResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResultadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtResultadoActionPerformed
+
+    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnEnviarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,7 +194,7 @@ public class TelaNewR extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnArquivo;
-    private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnEnviar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> jcRef;
     private javax.swing.JLabel lblRef;

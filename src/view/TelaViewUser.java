@@ -32,20 +32,23 @@ public class TelaViewUser extends javax.swing.JDialog {
         txtEmail = new javax.swing.JTextField();
         lblFoto = new javax.swing.JLabel();
         btnEditFoto = new javax.swing.JButton();
-        lblEmergencia = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        iconFoto = new javax.swing.JLabel();
+        lblEmergencia = new javax.swing.JLabel();
+        jsEmergencia = new javax.swing.JScrollPane();
+        txtEmergencia = new javax.swing.JTextArea();
+        btnEditInfo = new javax.swing.JButton();
         jPanelContato = new javax.swing.JPanel();
         lblTel = new javax.swing.JLabel();
+        tabelaTel = new javax.swing.JScrollPane();
+        jtTel = new javax.swing.JTable();
         btnAddTel = new javax.swing.JButton();
+        btnRmTel = new javax.swing.JButton();
         lblFamiliar = new javax.swing.JLabel();
+        tabelaF = new javax.swing.JScrollPane();
+        jtF = new javax.swing.JTable();
         btnAddF = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        btnRmF = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
@@ -92,42 +95,39 @@ public class TelaViewUser extends javax.swing.JDialog {
             }
         });
 
-        lblEmergencia.setText("Informações de Emergência");
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null}
-            },
-            new String [] {
-                "Informação"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable3.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jScrollPane3.setViewportView(jTable3);
-
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("FotoAqui");
+        iconFoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconFoto.setText("FotoAqui");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(iconFoto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(iconFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        lblEmergencia.setText("Informações de Emergência");
+
+        txtEmergencia.setEditable(false);
+        txtEmergencia.setBackground(new java.awt.Color(204, 204, 204));
+        txtEmergencia.setColumns(20);
+        txtEmergencia.setRows(5);
+        jsEmergencia.setViewportView(txtEmergencia);
+
+        btnEditInfo.setText("Editar");
+        btnEditInfo.setEnabled(false);
+        btnEditInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditInfoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelDadosLayout = new javax.swing.GroupLayout(jPanelDados);
         jPanelDados.setLayout(jPanelDadosLayout);
@@ -154,12 +154,16 @@ public class TelaViewUser extends javax.swing.JDialog {
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanelDadosLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(jsEmergencia, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE))
+                    .addGroup(jPanelDadosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblEmergencia)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanelDadosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblEmergencia)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addGap(143, 143, 143)
+                .addComponent(btnEditInfo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelDadosLayout.setVerticalGroup(
             jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,20 +183,39 @@ public class TelaViewUser extends javax.swing.JDialog {
                 .addComponent(lblFoto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelDadosLayout.createSequentialGroup()
-                        .addComponent(btnEditFoto)
-                        .addGap(0, 96, Short.MAX_VALUE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnEditFoto)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(lblEmergencia)
+                .addGap(1, 1, 1)
+                .addComponent(jsEmergencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(btnEditInfo)
+                .addGap(8, 8, 8))
         );
 
         jPanelContato.setBorder(javax.swing.BorderFactory.createTitledBorder("Contato"));
 
         lblTel.setText("Telefones");
+
+        jtTel.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null}
+            },
+            new String [] {
+                "Id", "Telefone"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtTel.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tabelaTel.setViewportView(jtTel);
 
         btnAddTel.setText("Adicionar telefone");
         btnAddTel.setEnabled(false);
@@ -202,7 +225,34 @@ public class TelaViewUser extends javax.swing.JDialog {
             }
         });
 
+        btnRmTel.setText("Remover telefone");
+        btnRmTel.setEnabled(false);
+        btnRmTel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRmTelActionPerformed(evt);
+            }
+        });
+
         lblFamiliar.setText("Contatos de Familiares");
+
+        jtF.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null}
+            },
+            new String [] {
+                "Id", "Telefone"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtF.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tabelaF.setViewportView(jtF);
 
         btnAddF.setText("Adicionar familiar");
         btnAddF.setEnabled(false);
@@ -212,43 +262,13 @@ public class TelaViewUser extends javax.swing.JDialog {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null}
-            },
-            new String [] {
-                "Id", "Telefone"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        btnRmF.setText("Remover familiar");
+        btnRmF.setEnabled(false);
+        btnRmF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRmFActionPerformed(evt);
             }
         });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jScrollPane1.setViewportView(jTable1);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null}
-            },
-            new String [] {
-                "Id", "Telefone"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout jPanelContatoLayout = new javax.swing.GroupLayout(jPanelContato);
         jPanelContato.setLayout(jPanelContatoLayout);
@@ -256,18 +276,23 @@ public class TelaViewUser extends javax.swing.JDialog {
             jPanelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelContatoLayout.createSequentialGroup()
                 .addGroup(jPanelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(tabelaTel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(tabelaF, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPanelContatoLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAddTel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRmTel))
                     .addGroup(jPanelContatoLayout.createSequentialGroup()
                         .addGroup(jPanelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblFamiliar)
                             .addComponent(lblTel))
-                        .addGap(0, 160, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelContatoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAddTel, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnAddF, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanelContatoLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(btnAddF)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addComponent(btnRmF)))
                 .addContainerGap())
         );
         jPanelContatoLayout.setVerticalGroup(
@@ -275,16 +300,20 @@ public class TelaViewUser extends javax.swing.JDialog {
             .addGroup(jPanelContatoLayout.createSequentialGroup()
                 .addComponent(lblTel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabelaTel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAddTel)
+                .addGroup(jPanelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddTel)
+                    .addComponent(btnRmTel))
                 .addGap(7, 7, 7)
                 .addComponent(lblFamiliar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabelaF, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAddF)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddF)
+                    .addComponent(btnRmF))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         btnEdit.setText("Editar");
@@ -333,15 +362,17 @@ public class TelaViewUser extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelContato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanelContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanelDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnFechar)
                     .addComponent(btnEdit))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -352,9 +383,10 @@ public class TelaViewUser extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -396,18 +428,24 @@ public class TelaViewUser extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAddFActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // Desligando os Botões
         btnEditFoto.setEnabled(false);
+        btnEditInfo.setEnabled(false);
         btnAddTel.setEnabled(false);
+        btnRmTel.setEnabled(false);
         btnAddF.setEnabled(false);
+        btnRmF.setEnabled(false);
         btnSalvar.setEnabled(false);
         
+        // Desabilitando os campos
         txtNome.setEditable(false);
         txtEndereco.setEditable(false);
         txtEmail.setEditable(false);
-        
+        txtEmergencia.setEditable(false);
         txtNome.setBackground(Color.LIGHT_GRAY);
         txtEndereco.setBackground(Color.LIGHT_GRAY);
         txtEmail.setBackground(Color.LIGHT_GRAY);
+        txtEmergencia.setBackground(Color.LIGHT_GRAY);
         
         btnEdit.setEnabled(true);
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -417,21 +455,42 @@ public class TelaViewUser extends javax.swing.JDialog {
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // Ligando os Botões
         btnEditFoto.setEnabled(true);
+        btnEditInfo.setEnabled(true);
         btnAddTel.setEnabled(true);
+        btnRmTel.setEnabled(true);
         btnAddF.setEnabled(true);
+        btnRmF.setEnabled(true);
         btnSalvar.setEnabled(true);
         
+        // Habilitando os campos
         txtNome.setEditable(true);
         txtEndereco.setEditable(true);
         txtEmail.setEditable(true);
-        
+        txtEmergencia.setEditable(true);
         txtNome.setBackground(Color.WHITE);
         txtEndereco.setBackground(Color.WHITE);
         txtEmail.setBackground(Color.WHITE);
+        txtEmergencia.setBackground(Color.WHITE);
         
         btnEdit.setEnabled(false);
     }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnRmTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRmTelActionPerformed
+        TelaRmTel telaRmTel = new TelaRmTel(new javax.swing.JFrame(), true);
+        telaRmTel.setVisible(true);
+    }//GEN-LAST:event_btnRmTelActionPerformed
+
+    private void btnRmFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRmFActionPerformed
+        TelaRmF telaRmF = new TelaRmF(new javax.swing.JFrame(), true);
+        telaRmF.setVisible(true);
+    }//GEN-LAST:event_btnRmFActionPerformed
+
+    private void btnEditInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditInfoActionPerformed
+        TelaNewInfo telaNewInfo = new TelaNewInfo(new javax.swing.JFrame(), true);
+        telaNewInfo.setVisible(true);
+    }//GEN-LAST:event_btnEditInfoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -481,19 +540,19 @@ public class TelaViewUser extends javax.swing.JDialog {
     private javax.swing.JButton btnAddTel;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEditFoto;
+    private javax.swing.JButton btnEditInfo;
     private javax.swing.JButton btnFechar;
+    private javax.swing.JButton btnRmF;
+    private javax.swing.JButton btnRmTel;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel iconFoto;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelContato;
     private javax.swing.JPanel jPanelDados;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JScrollPane jsEmergencia;
+    private javax.swing.JTable jtF;
+    private javax.swing.JTable jtTel;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmergencia;
     private javax.swing.JLabel lblEndereco;
@@ -501,7 +560,10 @@ public class TelaViewUser extends javax.swing.JDialog {
     private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblTel;
+    private javax.swing.JScrollPane tabelaF;
+    private javax.swing.JScrollPane tabelaTel;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextArea txtEmergencia;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables

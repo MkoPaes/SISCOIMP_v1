@@ -22,11 +22,12 @@ public class TelaEditAgenda extends javax.swing.JDialog {
         jcbAgendamento = new javax.swing.JComboBox<>();
         jPanelInfos = new javax.swing.JPanel();
         lblData = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        lblData1 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        btnCancelar = new javax.swing.JButton();
+        txtFData = new javax.swing.JFormattedTextField();
+        lblHora = new javax.swing.JLabel();
+        txtFHora = new javax.swing.JFormattedTextField();
         btnSalvar = new javax.swing.JButton();
+        btnDesmarcar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Consulta/Exame");
@@ -40,15 +41,15 @@ public class TelaEditAgenda extends javax.swing.JDialog {
 
         lblData.setText("Data");
 
-        jFormattedTextField1.setEditable(false);
-        jFormattedTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        txtFData.setEditable(false);
+        txtFData.setBackground(new java.awt.Color(204, 204, 204));
+        txtFData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
-        lblData1.setText("Hora");
+        lblHora.setText("Hora");
 
-        jFormattedTextField2.setEditable(false);
-        jFormattedTextField2.setBackground(new java.awt.Color(204, 204, 204));
-        jFormattedTextField2.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        txtFHora.setEditable(false);
+        txtFHora.setBackground(new java.awt.Color(204, 204, 204));
+        txtFHora.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 
         javax.swing.GroupLayout jPanelInfosLayout = new javax.swing.GroupLayout(jPanelInfos);
         jPanelInfos.setLayout(jPanelInfosLayout);
@@ -57,10 +58,10 @@ public class TelaEditAgenda extends javax.swing.JDialog {
             .addGroup(jPanelInfosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelInfosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFData, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblData)
-                    .addComponent(lblData1)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblHora)
+                    .addComponent(txtFHora, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanelInfosLayout.setVerticalGroup(
@@ -69,26 +70,34 @@ public class TelaEditAgenda extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(lblData)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtFData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblData1)
+                .addComponent(lblHora)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtFHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        btnCancelar.setText("Fechar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
 
         btnSalvar.setText("Salvar");
         btnSalvar.setEnabled(false);
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
+            }
+        });
+
+        btnDesmarcar.setText("Desmarcar");
+        btnDesmarcar.setEnabled(false);
+        btnDesmarcar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesmarcarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setText("Fechar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -99,6 +108,8 @@ public class TelaEditAgenda extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSalvar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDesmarcar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancelar))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -123,8 +134,9 @@ public class TelaEditAgenda extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
-                    .addComponent(btnSalvar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnSalvar)
+                    .addComponent(btnDesmarcar))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -151,6 +163,10 @@ public class TelaEditAgenda extends javax.swing.JDialog {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnDesmarcarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesmarcarActionPerformed
+       
+    }//GEN-LAST:event_btnDesmarcarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,14 +212,15 @@ public class TelaEditAgenda extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnDesmarcar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelInfos;
     private javax.swing.JComboBox<String> jcbAgendamento;
     private javax.swing.JLabel lblAgendamento;
     private javax.swing.JLabel lblData;
-    private javax.swing.JLabel lblData1;
+    private javax.swing.JLabel lblHora;
+    private javax.swing.JFormattedTextField txtFData;
+    private javax.swing.JFormattedTextField txtFHora;
     // End of variables declaration//GEN-END:variables
 }
