@@ -18,7 +18,6 @@ public class TelaNewInfo extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lblTitle = new javax.swing.JLabel();
         jScrollPane = new javax.swing.JScrollPane();
         jTextArea = new javax.swing.JTextArea();
         btnCadastrar = new javax.swing.JButton();
@@ -29,11 +28,8 @@ public class TelaNewInfo extends javax.swing.JDialog {
         setModal(true);
         setResizable(false);
 
-        lblTitle.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
-        lblTitle.setText("Nova Informação de Emergência");
-
         jTextArea.setColumns(20);
-        jTextArea.setRows(5);
+        jTextArea.setRows(3);
         jScrollPane.setViewportView(jTextArea);
 
         btnCadastrar.setText("Cadastrar");
@@ -62,23 +58,19 @@ public class TelaNewInfo extends javax.swing.JDialog {
                 .addGap(99, 99, 99))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane))
+                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(lblTitle)
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrar)
                     .addComponent(btnCancelar))
-                .addGap(18, 18, 18))
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -155,6 +147,5 @@ public class TelaNewInfo extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JTextArea jTextArea;
-    private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }

@@ -39,7 +39,6 @@ public class TelaNewUser extends javax.swing.JFrame {
         txtAreaEmergencia = new javax.swing.JTextArea();
         jPanelContato = new javax.swing.JPanel();
         lblTel = new javax.swing.JLabel();
-        txtFTel = new javax.swing.JFormattedTextField();
         btnAddTel = new javax.swing.JButton();
         lblFamiliar = new javax.swing.JLabel();
         btnNewFamiliar = new javax.swing.JButton();
@@ -50,6 +49,7 @@ public class TelaNewUser extends javax.swing.JFrame {
         setTitle("Cadastro");
         setMinimumSize(new java.awt.Dimension(540, 670));
         setPreferredSize(getMinimumSize());
+        setResizable(false);
 
         jPanelDados.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados Pessoais"));
 
@@ -87,12 +87,16 @@ public class TelaNewUser extends javax.swing.JFrame {
         lblEmergencia.setText("Possui alguma informação de emergência?");
 
         jcbEmergencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " - ", "Não", "Sim" }));
+        jcbEmergencia.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbEmergenciaItemStateChanged(evt);
+            }
+        });
 
-        txtAreaEmergencia.setEditable(false);
-        txtAreaEmergencia.setBackground(java.awt.SystemColor.controlHighlight);
+        txtAreaEmergencia.setBackground(new java.awt.Color(255, 255, 255));
         txtAreaEmergencia.setColumns(20);
         txtAreaEmergencia.setRows(5);
-        txtAreaEmergencia.setFocusable(false);
+        txtAreaEmergencia.setEnabled(false);
         jspEmergencia.setViewportView(txtAreaEmergencia);
 
         javax.swing.GroupLayout jPanelDadosLayout = new javax.swing.GroupLayout(jPanelDados);
@@ -160,25 +164,14 @@ public class TelaNewUser extends javax.swing.JFrame {
 
         lblTel.setText("Telefone");
 
-        try {
-            txtFTel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtFTel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFTelActionPerformed(evt);
-            }
-        });
-
-        btnAddTel.setText("Adicionar outro telefone");
+        btnAddTel.setText("Adicionar telefone");
         btnAddTel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddTelActionPerformed(evt);
             }
         });
 
-        lblFamiliar.setText("Caso deseje adicionar o contato de um familiar:");
+        lblFamiliar.setText("Adicionar contato de Familiar");
 
         btnNewFamiliar.setText("Adicionar familiar");
         btnNewFamiliar.addActionListener(new java.awt.event.ActionListener() {
@@ -194,25 +187,21 @@ public class TelaNewUser extends javax.swing.JFrame {
             .addGroup(jPanelContatoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanelContatoLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelContatoLayout.createSequentialGroup()
                         .addComponent(lblTel)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtFTel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddTel)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnAddTel))
                     .addGroup(jPanelContatoLayout.createSequentialGroup()
                         .addComponent(lblFamiliar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnNewFamiliar)
-                        .addGap(112, 112, 112))))
+                        .addComponent(btnNewFamiliar)))
+                .addGap(112, 112, 112))
         );
         jPanelContatoLayout.setVerticalGroup(
             jPanelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelContatoLayout.createSequentialGroup()
                 .addGroup(jPanelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTel)
-                    .addComponent(txtFTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddTel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -227,7 +216,7 @@ public class TelaNewUser extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelContato, javax.swing.GroupLayout.PREFERRED_SIZE, 494, Short.MAX_VALUE))
+                    .addComponent(jPanelContato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 6, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -317,15 +306,21 @@ public class TelaNewUser extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAddTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTelActionPerformed
+        TelaNewT telaNewT = new TelaNewT(new javax.swing.JFrame(), true);
+        telaNewT.setVisible(true);
     }//GEN-LAST:event_btnAddTelActionPerformed
 
     private void btnNewFamiliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewFamiliarActionPerformed
-       
+        TelaNewF telaNewF = new TelaNewF(new javax.swing.JFrame(), true);
+        telaNewF.setVisible(true);
     }//GEN-LAST:event_btnNewFamiliarActionPerformed
 
-    private void txtFTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFTelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFTelActionPerformed
+    private void jcbEmergenciaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbEmergenciaItemStateChanged
+        if(jcbEmergencia.getSelectedItem().toString() == "Sim")
+            txtAreaEmergencia.setEnabled(true);
+        else
+            txtAreaEmergencia.setEnabled(false);
+    }//GEN-LAST:event_jcbEmergenciaItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -383,7 +378,6 @@ public class TelaNewUser extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAreaEmergencia;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
-    private javax.swing.JFormattedTextField txtFTel;
     private javax.swing.JTextField txtFoto;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
