@@ -1,6 +1,7 @@
 package utils;
 
 import javax.swing.JDesktopPane;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
@@ -30,5 +31,15 @@ public class GerenciadorJanelas {
         } else {
             jf.setVisible(true);
         }
+    }
+    
+    public void abrirDialog (JDialog jd) {
+        if (jd.isVisible()){
+            jd.toFront();
+            jd.requestFocus();
+        } else {
+            jd.setVisible(true);
+        }
+        
     }
 }

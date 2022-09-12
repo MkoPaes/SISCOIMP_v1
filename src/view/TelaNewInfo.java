@@ -1,17 +1,11 @@
 package view;
 
-public class TelaNewInfo extends javax.swing.JInternalFrame {
-    private static TelaNewInfo instance;
-    
-    // Construtor - Singleton
-    private TelaNewInfo() {
+public class TelaNewInfo extends javax.swing.JDialog {
+
+    // Construtor
+    public TelaNewInfo(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
-    }
-    
-    public static TelaNewInfo getInstancia() {
-        if(instance == null)
-            instance = new TelaNewInfo();
-        return instance;
     }
 
     /**
@@ -30,8 +24,10 @@ public class TelaNewInfo extends javax.swing.JInternalFrame {
         btnCadastrar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
-        setClosable(true);
-        setTitle("Adicionar Informação de Emergência");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Nova Informação de Emergência");
+        setModal(true);
+        setResizable(false);
 
         lblTitle.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         lblTitle.setText("Nova Informação de Emergência");
@@ -77,7 +73,7 @@ public class TelaNewInfo extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20)
                 .addComponent(lblTitle)
                 .addGap(20, 20, 20)
-                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrar)
@@ -99,15 +95,59 @@ public class TelaNewInfo extends javax.swing.JInternalFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(TelaNewInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(TelaNewInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(TelaNewInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TelaNewInfo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                TelaNewInfo dialog = new TelaNewInfo(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;

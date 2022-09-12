@@ -21,8 +21,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jdp = new javax.swing.JDesktopPane();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jmArquivo = new javax.swing.JMenu();
         jmDados = new javax.swing.JMenu();
         jmiEditD = new javax.swing.JMenuItem();
         jmiViewD = new javax.swing.JMenuItem();
@@ -46,22 +49,53 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISCOIMP - Sistema de Controle de Informações Médicas Pessoal");
+        setMinimumSize(new java.awt.Dimension(360, 338));
         setResizable(false);
+
+        jButton1.setText("Seus Dados");
+
+        jButton2.setText("Profissionais");
+
+        jButton3.setText("Exames/Consultas");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Resultados");
+
+        jdp.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jdp.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jdp.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jdp.setLayer(jButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jdpLayout = new javax.swing.GroupLayout(jdp);
         jdp.setLayout(jdpLayout);
         jdpLayout.setHorizontalGroup(
             jdpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGroup(jdpLayout.createSequentialGroup()
+                .addGap(113, 113, 113)
+                .addGroup(jdpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         jdpLayout.setVerticalGroup(
             jdpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 441, Short.MAX_VALUE)
+            .addGroup(jdpLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
-
-        jmArquivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Arquivo_32px.png"))); // NOI18N
-        jmArquivo.setText("Arquivo");
-        jMenuBar1.add(jmArquivo);
 
         jmDados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Pessoal_24px.png"))); // NOI18N
         jmDados.setText("Seus Dados");
@@ -173,7 +207,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jdp)
+            .addComponent(jdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -181,25 +215,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiNewFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNewFActionPerformed
-        // TODO add your handling code here:
-        gerenciador.abrirJanela(TelaNewF.getInstancia());
+        TelaNewF telaNewF = new TelaNewF(new javax.swing.JFrame(), true);
+        telaNewF.setVisible(true);
     }//GEN-LAST:event_jmiNewFActionPerformed
 
     private void jmiNewInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNewInfoActionPerformed
-        // TODO add your handling code here:
-        TelaNewInfo telaNewInfo = TelaNewInfo.getInstancia();
-        gerenciador.abrirJanela(TelaNewInfo.getInstancia());
+        TelaNewInfo telaNewInfo = new TelaNewInfo(new javax.swing.JFrame(), true);
+        telaNewInfo.setVisible(true);
     }//GEN-LAST:event_jmiNewInfoActionPerformed
 
     private void jmiNewPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNewPActionPerformed
-        // TODO add your handling code here:
-        gerenciador.abrirJanela(TelaNewP.getInstancia());
+        TelaNewP telaNewP = new TelaNewP(new javax.swing.JFrame(), true);
+        telaNewP.setVisible(true);
     }//GEN-LAST:event_jmiNewPActionPerformed
 
     private void jmiNewEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNewEActionPerformed
         // TODO add your handling code here:
         gerenciador.abrirJanela(TelaNewE.getInstancia());
     }//GEN-LAST:event_jmiNewEActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,9 +274,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JDesktopPane jdp;
-    private javax.swing.JMenu jmArquivo;
     private javax.swing.JMenu jmAtendimentos;
     private javax.swing.JMenu jmDados;
     private javax.swing.JMenu jmExames;

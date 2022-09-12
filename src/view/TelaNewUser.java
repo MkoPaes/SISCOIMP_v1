@@ -1,5 +1,8 @@
 package view;
 
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import utils.GerenciadorJanelas;
 
 public class TelaNewUser extends javax.swing.JFrame {
@@ -27,7 +30,8 @@ public class TelaNewUser extends javax.swing.JFrame {
         txtEndereco = new javax.swing.JTextField();
         lblEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblFoto = new javax.swing.JLabel();
+        txtFoto = new javax.swing.JTextField();
         btnFoto = new javax.swing.JButton();
         lblEmergencia = new javax.swing.JLabel();
         jcbEmergencia = new javax.swing.JComboBox<>();
@@ -44,6 +48,8 @@ public class TelaNewUser extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro");
+        setMinimumSize(new java.awt.Dimension(540, 670));
+        setPreferredSize(getMinimumSize());
 
         jPanelDados.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados Pessoais"));
 
@@ -65,7 +71,11 @@ public class TelaNewUser extends javax.swing.JFrame {
 
         lblEmail.setText("Email");
 
-        jLabel1.setText("Foto");
+        lblFoto.setText("Foto");
+
+        txtFoto.setEditable(false);
+        txtFoto.setBackground(java.awt.SystemColor.controlHighlight);
+        txtFoto.setFocusable(false);
 
         btnFoto.setText("Selecione um arquivo");
         btnFoto.addActionListener(new java.awt.event.ActionListener() {
@@ -76,10 +86,13 @@ public class TelaNewUser extends javax.swing.JFrame {
 
         lblEmergencia.setText("Possui alguma informação de emergência?");
 
-        jcbEmergencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
+        jcbEmergencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " - ", "Não", "Sim" }));
 
+        txtAreaEmergencia.setEditable(false);
+        txtAreaEmergencia.setBackground(java.awt.SystemColor.controlHighlight);
         txtAreaEmergencia.setColumns(20);
         txtAreaEmergencia.setRows(5);
+        txtAreaEmergencia.setFocusable(false);
         jspEmergencia.setViewportView(txtAreaEmergencia);
 
         javax.swing.GroupLayout jPanelDadosLayout = new javax.swing.GroupLayout(jPanelDados);
@@ -95,19 +108,23 @@ public class TelaNewUser extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelDadosLayout.createSequentialGroup()
-                                .addComponent(lblEmergencia)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jcbEmergencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnFoto)
-                                .addComponent(jLabel1)
-                                .addComponent(lblNome)
-                                .addComponent(lblEndereco)
-                                .addComponent(lblEmail)
-                                .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
-                                .addComponent(txtEndereco)
-                                .addComponent(txtEmail)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(txtFoto)
+                                .addGap(2, 2, 2)
+                                .addComponent(btnFoto))
+                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                            .addComponent(txtEndereco)
+                            .addComponent(txtEmail)
+                            .addGroup(jPanelDadosLayout.createSequentialGroup()
+                                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelDadosLayout.createSequentialGroup()
+                                        .addComponent(lblEmergencia)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jcbEmergencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblFoto)
+                                    .addComponent(lblNome)
+                                    .addComponent(lblEndereco)
+                                    .addComponent(lblEmail))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanelDadosLayout.setVerticalGroup(
@@ -125,9 +142,11 @@ public class TelaNewUser extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
+                .addComponent(lblFoto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnFoto)
+                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFoto)
+                    .addComponent(txtFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmergencia)
@@ -146,7 +165,6 @@ public class TelaNewUser extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtFTel.setText("     -    ");
         txtFTel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFTelActionPerformed(evt);
@@ -209,7 +227,7 @@ public class TelaNewUser extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelContato, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanelContato, javax.swing.GroupLayout.PREFERRED_SIZE, 494, Short.MAX_VALUE))
                 .addGap(0, 6, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -261,7 +279,7 @@ public class TelaNewUser extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnCadastrar))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -275,7 +293,19 @@ public class TelaNewUser extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
-        gerenciador.abrirFrame(TelaUploadFoto.getInstancia());
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Procurar Arquivo");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Imagem", "jpg", "jpeg", "png");
+        
+        fileChooser.setFileFilter(filter);
+        int retorno = fileChooser.showOpenDialog(this);
+        
+        if(retorno == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            txtFoto.setText(file.getPath());
+        }
     }//GEN-LAST:event_btnFotoActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
@@ -290,7 +320,7 @@ public class TelaNewUser extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddTelActionPerformed
 
     private void btnNewFamiliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewFamiliarActionPerformed
-        gerenciador.abrirFrame(TelaNewF_SDI.getInstancia());
+       
     }//GEN-LAST:event_btnNewFamiliarActionPerformed
 
     private void txtFTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFTelActionPerformed
@@ -338,7 +368,6 @@ public class TelaNewUser extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnFoto;
     private javax.swing.JButton btnNewFamiliar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelContato;
     private javax.swing.JPanel jPanelDados;
@@ -348,12 +377,14 @@ public class TelaNewUser extends javax.swing.JFrame {
     private javax.swing.JLabel lblEmergencia;
     private javax.swing.JLabel lblEndereco;
     private javax.swing.JLabel lblFamiliar;
+    private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblTel;
     private javax.swing.JTextArea txtAreaEmergencia;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JFormattedTextField txtFTel;
+    private javax.swing.JTextField txtFoto;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }
