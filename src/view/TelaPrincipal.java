@@ -72,6 +72,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         btnResultados.setText("Resultados");
+        btnResultados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResultadosActionPerformed(evt);
+            }
+        });
 
         jdp.setLayer(btnDados, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jdp.setLayer(btnProfissionais, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -216,6 +221,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jmiViewR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/View_24px.png"))); // NOI18N
         jmiViewR.setText("Visualizar");
+        jmiViewR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiViewRActionPerformed(evt);
+            }
+        });
         jmResultados.add(jmiViewR);
 
         jmAtendimentos.add(jmResultados);
@@ -298,6 +308,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaViewAgenda telaViewAgenda = new TelaViewAgenda(new javax.swing.JFrame(), true);
         telaViewAgenda.setVisible(true);
     }//GEN-LAST:event_jmiViewEActionPerformed
+
+    private void btnResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResultadosActionPerformed
+        TelaViewResultados telaViewResultados = new TelaViewResultados(new javax.swing.JFrame(), true);
+        telaViewResultados.setVisible(true);
+    }//GEN-LAST:event_btnResultadosActionPerformed
+
+    private void jmiViewRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiViewRActionPerformed
+        TelaViewResultados telaViewResultados = new TelaViewResultados(new javax.swing.JFrame(), true);
+        telaViewResultados.setVisible(true);
+    }//GEN-LAST:event_jmiViewRActionPerformed
 
     /**
      * @param args the command line arguments
