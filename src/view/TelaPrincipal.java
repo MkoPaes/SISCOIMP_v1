@@ -27,7 +27,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnResultados = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmDados = new javax.swing.JMenu();
-        jmiEditD = new javax.swing.JMenuItem();
         jmiViewD = new javax.swing.JMenuItem();
         jsD = new javax.swing.JPopupMenu.Separator();
         jmNewD = new javax.swing.JMenu();
@@ -35,7 +34,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmiNewInfo = new javax.swing.JMenuItem();
         jmProfissional = new javax.swing.JMenu();
         jmiNewP = new javax.swing.JMenuItem();
-        jmiEditP = new javax.swing.JMenuItem();
         jmiViewP = new javax.swing.JMenuItem();
         jmAtendimentos = new javax.swing.JMenu();
         jmExames = new javax.swing.JMenu();
@@ -54,8 +52,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setResizable(false);
 
         btnDados.setText("Seus Dados");
+        btnDados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDadosActionPerformed(evt);
+            }
+        });
 
         btnProfissionais.setText("Profissionais");
+        btnProfissionais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProfissionaisActionPerformed(evt);
+            }
+        });
 
         btnAgenda.setText("Exames/Consultas");
 
@@ -96,12 +104,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmDados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Pessoal_24px.png"))); // NOI18N
         jmDados.setText("Seus Dados");
 
-        jmiEditD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Editar_24px.png"))); // NOI18N
-        jmiEditD.setText("Editar");
-        jmDados.add(jmiEditD);
-
         jmiViewD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/View_24px.png"))); // NOI18N
         jmiViewD.setText("Visualizar");
+        jmiViewD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiViewDActionPerformed(evt);
+            }
+        });
         jmDados.add(jmiViewD);
         jmDados.add(jsD);
 
@@ -141,10 +150,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jmProfissional.add(jmiNewP);
-
-        jmiEditP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Editar_24px.png"))); // NOI18N
-        jmiEditP.setText("Editar");
-        jmProfissional.add(jmiEditP);
 
         jmiViewP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/View_24px.png"))); // NOI18N
         jmiViewP.setText("Visualizar");
@@ -254,6 +259,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         telaNewR.setVisible(true);
     }//GEN-LAST:event_jmiNewRActionPerformed
 
+    private void btnDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDadosActionPerformed
+        TelaViewUser telaViewUser = new TelaViewUser(new javax.swing.JFrame(), true);
+        telaViewUser.setVisible(true);
+    }//GEN-LAST:event_btnDadosActionPerformed
+
+    private void btnProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfissionaisActionPerformed
+        TelaViewP telaViewP = new TelaViewP(new javax.swing.JFrame(), true);
+        telaViewP.setVisible(true);
+    }//GEN-LAST:event_btnProfissionaisActionPerformed
+
+    private void jmiViewDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiViewDActionPerformed
+        TelaViewUser telaViewUser = new TelaViewUser(new javax.swing.JFrame(), true);
+        telaViewUser.setVisible(true);
+    }//GEN-LAST:event_jmiViewDActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -302,9 +322,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jmNewD;
     private javax.swing.JMenu jmProfissional;
     private javax.swing.JMenu jmResultados;
-    private javax.swing.JMenuItem jmiEditD;
     private javax.swing.JMenuItem jmiEditE;
-    private javax.swing.JMenuItem jmiEditP;
     private javax.swing.JMenuItem jmiNewC;
     private javax.swing.JMenuItem jmiNewE;
     private javax.swing.JMenuItem jmiNewF;
