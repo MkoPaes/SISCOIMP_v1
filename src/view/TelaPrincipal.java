@@ -39,6 +39,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmiViewP = new javax.swing.JMenuItem();
         jmAtendimentos = new javax.swing.JMenu();
         jmExames = new javax.swing.JMenu();
+        jmiNewC = new javax.swing.JMenuItem();
         jmiNewE = new javax.swing.JMenuItem();
         jmiEditE = new javax.swing.JMenuItem();
         jmiViewE = new javax.swing.JMenuItem();
@@ -162,8 +163,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmExames.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Agenda_24px.png"))); // NOI18N
         jmExames.setText("Consultas/Exames");
 
+        jmiNewC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Novo_24px.png"))); // NOI18N
+        jmiNewC.setText("Agendar Consulta");
+        jmiNewC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiNewCActionPerformed(evt);
+            }
+        });
+        jmExames.add(jmiNewC);
+
         jmiNewE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Novo_24px.png"))); // NOI18N
-        jmiNewE.setText("Agendar");
+        jmiNewE.setText("Agendar Exame");
         jmiNewE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiNewEActionPerformed(evt);
@@ -187,6 +197,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jmiNewR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/NovoResultado_24px.png"))); // NOI18N
         jmiNewR.setText("Enviar");
+        jmiNewR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiNewRActionPerformed(evt);
+            }
+        });
         jmResultados.add(jmiNewR);
 
         jmiViewR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/View_24px.png"))); // NOI18N
@@ -229,14 +244,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         telaNewP.setVisible(true);
     }//GEN-LAST:event_jmiNewPActionPerformed
 
-    private void jmiNewEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNewEActionPerformed
-        // TODO add your handling code here:
-        gerenciador.abrirJanela(TelaNewE.getInstancia());
-    }//GEN-LAST:event_jmiNewEActionPerformed
+    private void jmiNewCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNewCActionPerformed
+        TelaNewC telaNewC = new TelaNewC(new javax.swing.JFrame(), true);
+        telaNewC.setVisible(true);
+    }//GEN-LAST:event_jmiNewCActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jmiNewEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNewEActionPerformed
+        TelaNewE telaNewE = new TelaNewE(new javax.swing.JFrame(), true);
+        telaNewE.setVisible(true);
+    }//GEN-LAST:event_jmiNewEActionPerformed
+
+    private void jmiNewRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNewRActionPerformed
+        TelaNewR telaNewR = new TelaNewR(new javax.swing.JFrame(), true);
+        telaNewR.setVisible(true);
+    }//GEN-LAST:event_jmiNewRActionPerformed
 
     /**
      * @param args the command line arguments
@@ -289,6 +314,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiEditD;
     private javax.swing.JMenuItem jmiEditE;
     private javax.swing.JMenuItem jmiEditP;
+    private javax.swing.JMenuItem jmiNewC;
     private javax.swing.JMenuItem jmiNewE;
     private javax.swing.JMenuItem jmiNewF;
     private javax.swing.JMenuItem jmiNewInfo;
