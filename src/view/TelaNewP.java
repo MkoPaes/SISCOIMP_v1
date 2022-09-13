@@ -236,6 +236,7 @@ public class TelaNewP extends javax.swing.JDialog {
             TelaWarningBranco telaW = new TelaWarningBranco(new javax.swing.JFrame(), true);
             telaW.setVisible(true);
         } else {
+            // Aqui vai o código para salvar de fato
             this.dispose();
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed

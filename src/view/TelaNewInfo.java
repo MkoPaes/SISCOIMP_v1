@@ -78,6 +78,7 @@ public class TelaNewInfo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // Aqui vai o código para salvar de fato
         this.dispose();
     }//GEN-LAST:event_btnSalvarActionPerformed
 

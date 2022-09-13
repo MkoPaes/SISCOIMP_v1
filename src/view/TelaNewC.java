@@ -139,6 +139,7 @@ public class TelaNewC extends javax.swing.JDialog {
         else if(jcbMin.isEnabled() && jcbMin.getSelectedIndex() == 0)
             telaW.setVisible(true);
         else {
+            // Aqui vai o código para Salvar de fato
             telaW.dispose();
             this.dispose();
         }

@@ -147,6 +147,7 @@ public class TelaNewR extends javax.swing.JDialog {
     }//GEN-LAST:event_txtResultadoActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+        // Aqui vai o código para salvar de fato
         this.dispose();
     }//GEN-LAST:event_btnEnviarActionPerformed
 

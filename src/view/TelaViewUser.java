@@ -438,6 +438,8 @@ public class TelaViewUser extends javax.swing.JDialog {
             txtEmergencia.setBackground(Color.LIGHT_GRAY);
         
             btnEdit.setEnabled(true);
+            
+            // Aqui vai o código para salvar de fato
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 

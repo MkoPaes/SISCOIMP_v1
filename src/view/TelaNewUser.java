@@ -317,6 +317,7 @@ public class TelaNewUser extends javax.swing.JFrame {
             TelaWarningBranco telaW = new TelaWarningBranco(new javax.swing.JFrame(), true);
             telaW.setVisible(true);
         } else {
+            // Aqui vai o código para salvar de fato
             try {
                 String caminho = getClass().getResource("../imgs/").toString().substring(5);
                 File outputfile = new File(caminho+"perfil.jpg");
