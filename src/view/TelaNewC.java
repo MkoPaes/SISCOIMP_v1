@@ -23,10 +23,11 @@ public class TelaNewC extends javax.swing.JDialog {
         lblProfissional = new javax.swing.JLabel();
         jcProfissional = new javax.swing.JComboBox<>();
         lblData = new javax.swing.JLabel();
-        txtFData = new javax.swing.JFormattedTextField();
         lblHora = new javax.swing.JLabel();
-        txtFHora = new javax.swing.JFormattedTextField();
         btnAgendar = new javax.swing.JButton();
+        jcbHora = new javax.swing.JComboBox<>();
+        jcbMin = new javax.swing.JComboBox<>();
+        txtFData = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agendar Consulta");
@@ -39,27 +40,7 @@ public class TelaNewC extends javax.swing.JDialog {
 
         lblData.setText("Data");
 
-        txtFData.setForeground(new java.awt.Color(153, 153, 153));
-        txtFData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        txtFData.setText("dd/mm/yyyy");
-        txtFData.setToolTipText("");
-        txtFData.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtFDataFocusGained(evt);
-            }
-        });
-
-        lblHora.setText("Hora");
-
-        txtFHora.setForeground(new java.awt.Color(153, 153, 153));
-        txtFHora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        txtFHora.setText("hh:mm");
-        txtFHora.setToolTipText("");
-        txtFHora.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtFHoraFocusGained(evt);
-            }
-        });
+        lblHora.setText("Horário");
 
         btnAgendar.setText("Agendar");
         btnAgendar.addActionListener(new java.awt.event.ActionListener() {
@@ -68,19 +49,39 @@ public class TelaNewC extends javax.swing.JDialog {
             }
         });
 
+        jcbHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hora", "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+        jcbHora.setEnabled(false);
+
+        jcbMin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Min", "00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" }));
+        jcbMin.setEnabled(false);
+
+        txtFData.setForeground(new java.awt.Color(153, 153, 153));
+        try {
+            txtFData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtFData.setToolTipText("");
+        txtFData.setEnabled(false);
+        txtFData.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtFDataFocusGained(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(lblProfissional)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jcProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jcProfissional, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(lblData)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -88,8 +89,10 @@ public class TelaNewC extends javax.swing.JDialog {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(lblHora)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtFHora, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(35, Short.MAX_VALUE))
+                            .addComponent(jcbHora, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jcbMin, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,14 +102,17 @@ public class TelaNewC extends javax.swing.JDialog {
                     .addComponent(lblProfissional)
                     .addComponent(jcProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblData)
-                    .addComponent(txtFData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHora)
-                    .addComponent(txtFHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jcbHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jcbMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblData)
+                        .addComponent(lblHora)
+                        .addComponent(txtFData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20)
                 .addComponent(btnAgendar)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,19 +130,24 @@ public class TelaNewC extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarActionPerformed
+        TelaWarningBranco telaW = new TelaWarningBranco(new javax.swing.JFrame(), true);
+        if(txtFData.isEnabled() && txtFData.getText().equals("  /  /    "))
+            telaW.setVisible(true);
+        else if(jcbHora.isEnabled() && jcbHora.getSelectedIndex() == 0)
+            telaW.setVisible(true);
+        else if(jcbMin.isEnabled() && jcbMin.getSelectedIndex() == 0)
+            telaW.setVisible(true);
+        else {
+            telaW.dispose();
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnAgendarActionPerformed
+
     private void txtFDataFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFDataFocusGained
         txtFData.setText("");
         txtFData.setForeground(Color.BLACK);
     }//GEN-LAST:event_txtFDataFocusGained
-
-    private void txtFHoraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFHoraFocusGained
-        txtFHora.setText("");
-        txtFHora.setForeground(Color.BLACK);
-    }//GEN-LAST:event_txtFHoraFocusGained
-
-    private void btnAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnAgendarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,10 +196,11 @@ public class TelaNewC extends javax.swing.JDialog {
     private javax.swing.JButton btnAgendar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> jcProfissional;
+    private javax.swing.JComboBox<String> jcbHora;
+    private javax.swing.JComboBox<String> jcbMin;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblProfissional;
     private javax.swing.JFormattedTextField txtFData;
-    private javax.swing.JFormattedTextField txtFHora;
     // End of variables declaration//GEN-END:variables
 }

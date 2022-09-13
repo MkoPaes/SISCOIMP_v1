@@ -1,22 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package view;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import utils.ManipulaImagem;
 
-/**
- *
- * @author mkopa
- */
 public class TelaNewP extends javax.swing.JDialog {
-
-    /**
-     * Creates new form TelaNewP2
-     */
+    private BufferedImage imagem;
+    
+    // Construtor
     public TelaNewP(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -43,15 +37,14 @@ public class TelaNewP extends javax.swing.JDialog {
         txtFTel = new javax.swing.JFormattedTextField();
         lblFoto = new javax.swing.JLabel();
         txtFoto = new javax.swing.JTextField();
+        lblIcon = new javax.swing.JLabel();
         btnFoto = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastrar Profissional");
         setMaximumSize(new java.awt.Dimension(800, 600));
-        setMinimumSize(new java.awt.Dimension(510, 300));
         setModal(true);
-        setPreferredSize(getMinimumSize());
         setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
@@ -95,12 +88,18 @@ public class TelaNewP extends javax.swing.JDialog {
         txtFoto.setEditable(false);
         txtFoto.setBackground(new java.awt.Color(221, 221, 221));
         txtFoto.setForeground(new java.awt.Color(51, 51, 51));
+        txtFoto.setAutoscrolls(false);
         txtFoto.setFocusable(false);
         txtFoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFotoActionPerformed(evt);
             }
         });
+
+        lblIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIcon.setAlignmentY(0.0F);
+        lblIcon.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lblIcon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         btnFoto.setText("Escolha um arquivo");
         btnFoto.addActionListener(new java.awt.event.ActionListener() {
@@ -121,36 +120,33 @@ public class TelaNewP extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblFoto)
+                    .addComponent(lblEndereco)
+                    .addComponent(lblTel)
+                    .addComponent(lblNome))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnCadastrar)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblEndereco)
-                                .addComponent(lblTel)
-                                .addComponent(lblNome))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(txtFDDD, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtFTel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lblNum)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtFDDD, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtFTel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(27, 27, 27)
-                            .addComponent(lblFoto)
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnFoto)
-                                .addComponent(txtFoto)))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                            .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lblNum)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(btnFoto)
+                            .addGap(32, 32, 32)
+                            .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,23 +171,25 @@ public class TelaNewP extends javax.swing.JDialog {
                     .addComponent(lblFoto)
                     .addComponent(txtFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnFoto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFoto))
+                .addGap(20, 20, 20)
                 .addComponent(btnCadastrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -221,13 +219,25 @@ public class TelaNewP extends javax.swing.JDialog {
         int retorno = fileChooser.showOpenDialog(this);
 
         if(retorno == JFileChooser.APPROVE_OPTION) {
-            File file = fileChooser.getSelectedFile();
-            txtFoto.setText(file.getPath());
+            File arquivo = fileChooser.getSelectedFile();
+            try{
+                imagem = ManipulaImagem.setDimensao(arquivo.getAbsolutePath(), 150, 150);
+                txtFoto.setText(arquivo.getAbsolutePath());
+                lblIcon.setIcon(new ImageIcon(imagem));
+            } catch (Exception ex){
+                
+            }
         }
     }//GEN-LAST:event_btnFotoActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        this.dispose();
+        if(txtNome.getText().isBlank() || txtEndereco.getText().isBlank() || txtNum.getText().isBlank() ||
+           txtFDDD.getText().equals("(  )") || txtFTel.getText().equals("     -    ")) {
+            TelaWarningBranco telaW = new TelaWarningBranco(new javax.swing.JFrame(), true);
+            telaW.setVisible(true);
+        } else {
+            this.dispose();
+        }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
@@ -279,6 +289,7 @@ public class TelaNewP extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblEndereco;
     private javax.swing.JLabel lblFoto;
+    private javax.swing.JLabel lblIcon;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNum;
     private javax.swing.JLabel lblTel;

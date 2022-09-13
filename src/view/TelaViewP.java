@@ -281,20 +281,26 @@ public class TelaViewP extends javax.swing.JDialog {
     }//GEN-LAST:event_btnFotoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        btnSalvar.setEnabled(false);
-        btnFoto.setEnabled(false);
+        if(txtEndereco.getText().isBlank() || txtNum.getText().isBlank() ||
+           txtFDDD.getText().equals("(  )") || txtFTel.getText().equals("     -    ")) {
+            TelaWarningBranco telaW = new TelaWarningBranco(new javax.swing.JFrame(), true);
+            telaW.setVisible(true);
+        } else {
+            btnSalvar.setEnabled(false);
+            btnFoto.setEnabled(false);
         
-        txtEndereco.setEditable(false);
-        txtNum.setEditable(false);
-        txtFDDD.setEditable(false);
-        txtFTel.setEditable(false);
+            txtEndereco.setEditable(false);
+            txtNum.setEditable(false);
+            txtFDDD.setEditable(false);
+            txtFTel.setEditable(false);
         
-        txtEndereco.setBackground(Color.LIGHT_GRAY);
-        txtNum.setBackground(Color.LIGHT_GRAY);
-        txtFDDD.setBackground(Color.LIGHT_GRAY);
-        txtFTel.setBackground(Color.LIGHT_GRAY);
+            txtEndereco.setBackground(Color.LIGHT_GRAY);
+            txtNum.setBackground(Color.LIGHT_GRAY);
+            txtFDDD.setBackground(Color.LIGHT_GRAY);
+            txtFTel.setBackground(Color.LIGHT_GRAY);
         
-        btnEdit.setEnabled(true);
+            btnEdit.setEnabled(true);
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

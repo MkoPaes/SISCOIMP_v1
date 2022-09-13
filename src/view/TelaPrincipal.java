@@ -64,7 +64,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnAgenda.setText("Exames/Consultas");
+        btnAgenda.setText("Consultas/Exames");
         btnAgenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgendaActionPerformed(evt);

@@ -82,7 +82,15 @@ public class TelaNewT extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        this.dispose();
+        TelaWarningBranco telaW = new TelaWarningBranco(new javax.swing.JFrame(), true);
+        if(txtFDDD.getText().equals("(  )"))
+            telaW.setVisible(true);
+        else if(txtFTel.getText().equals("     -    "))
+            telaW.setVisible(true);
+        else{     
+            telaW.dispose();
+            this.dispose();
+        }
     }//GEN-LAST:event_btnAddActionPerformed
 
     /**

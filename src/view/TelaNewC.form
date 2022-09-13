@@ -42,14 +42,14 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="btnAgendar" min="-2" pref="90" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblProfissional" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jcProfissional" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="jcProfissional" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblData" min="-2" max="-2" attributes="0"/>
@@ -58,11 +58,13 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lblHora" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtFHora" min="-2" pref="101" max="-2" attributes="0"/>
+                              <Component id="jcbHora" min="-2" pref="60" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jcbMin" min="-2" pref="60" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -75,15 +77,20 @@
                       <Component id="jcProfissional" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblData" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtFData" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblHora" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtFHora" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="jcbHora" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbMin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblData" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblHora" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFData" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="btnAgendar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -111,40 +118,10 @@
             <Property name="text" type="java.lang.String" value="Data"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtFData">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="99" red="99" type="rgb"/>
-            </Property>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="1" type="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="dd/mm/yyyy"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-          </Properties>
-          <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtFDataFocusGained"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="lblHora">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Hora"/>
+            <Property name="text" type="java.lang.String" value="Hor&#xe1;rio"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtFHora">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="99" red="99" type="rgb"/>
-            </Property>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="1" type="2"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="hh:mm"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-          </Properties>
-          <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtFHoraFocusGained"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnAgendar">
           <Properties>
@@ -152,6 +129,83 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgendarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbHora">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="25">
+                <StringItem index="0" value="Hora"/>
+                <StringItem index="1" value="00"/>
+                <StringItem index="2" value="01"/>
+                <StringItem index="3" value="02"/>
+                <StringItem index="4" value="03"/>
+                <StringItem index="5" value="04"/>
+                <StringItem index="6" value="05"/>
+                <StringItem index="7" value="06"/>
+                <StringItem index="8" value="07"/>
+                <StringItem index="9" value="08"/>
+                <StringItem index="10" value="09"/>
+                <StringItem index="11" value="10"/>
+                <StringItem index="12" value="11"/>
+                <StringItem index="13" value="12"/>
+                <StringItem index="14" value="13"/>
+                <StringItem index="15" value="14"/>
+                <StringItem index="16" value="15"/>
+                <StringItem index="17" value="16"/>
+                <StringItem index="18" value="17"/>
+                <StringItem index="19" value="18"/>
+                <StringItem index="20" value="19"/>
+                <StringItem index="21" value="20"/>
+                <StringItem index="22" value="21"/>
+                <StringItem index="23" value="22"/>
+                <StringItem index="24" value="23"/>
+              </StringArray>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbMin">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="13">
+                <StringItem index="0" value="Min"/>
+                <StringItem index="1" value="00"/>
+                <StringItem index="2" value="05"/>
+                <StringItem index="3" value="10"/>
+                <StringItem index="4" value="15"/>
+                <StringItem index="5" value="20"/>
+                <StringItem index="6" value="25"/>
+                <StringItem index="7" value="30"/>
+                <StringItem index="8" value="35"/>
+                <StringItem index="9" value="40"/>
+                <StringItem index="10" value="45"/>
+                <StringItem index="11" value="50"/>
+                <StringItem index="12" value="55"/>
+              </StringArray>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="txtFData">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="##/##/####" subtype="-1" type="5"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtFDataFocusGained"/>
           </Events>
         </Component>
       </SubComponents>
