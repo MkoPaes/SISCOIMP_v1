@@ -11,6 +11,7 @@ public class TelaViewUser extends javax.swing.JDialog {
     public TelaViewUser(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
     }
 
     /**
