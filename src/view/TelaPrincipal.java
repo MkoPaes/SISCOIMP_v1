@@ -325,8 +325,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
 
-        Dados dados = Dados.getInstance();
-        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -350,15 +348,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        
+        Dados dados = Dados.getInstance();
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaPrincipal().setVisible(true);
+                TelaNewUser2 newUser = new TelaNewUser2(new javax.swing.JFrame(), true);
                 
-                if(!dados.HasUser()){
-                    //usuario não existe
-                    new TelaNewUser().setVisible(true);
+                while(!dados.HasUser()){
+                //usuario não existe
+                    if(!newUser.isVisible())
+                        newUser.setVisible(true);
                 }
+                
             }
         });
     }

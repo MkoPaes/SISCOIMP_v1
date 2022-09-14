@@ -13,10 +13,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import controllers.Dados;
 import utils.ManipulaImagem;
 
-public class TelaNewUser extends javax.swing.JFrame {
+public class TelaNewUser2 extends javax.swing.JDialog {
     BufferedImage imagem = null;
-            
-    public TelaNewUser() {
+    
+    // Construtor
+    public TelaNewUser2(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -53,10 +55,10 @@ public class TelaNewUser extends javax.swing.JFrame {
         lblFamiliar = new javax.swing.JLabel();
         btnNewFamiliar = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastro");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro Usuário");
+        setModal(true);
         setResizable(false);
 
         jPanelDados.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados Pessoais"));
@@ -236,13 +238,6 @@ public class TelaNewUser extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -255,10 +250,8 @@ public class TelaNewUser extends javax.swing.JFrame {
                             .addComponent(jPanelContato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanelDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(btnCadastrar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar)))
+                        .addGap(183, 183, 183)
+                        .addComponent(btnCadastrar)))
                 .addGap(10, 10, 10))
         );
         jPanel1Layout.setVerticalGroup(
@@ -269,9 +262,7 @@ public class TelaNewUser extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jPanelContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCadastrar)
-                    .addComponent(btnCancelar))
+                .addComponent(btnCadastrar)
                 .addGap(15, 15, 15))
         );
 
@@ -294,12 +285,12 @@ public class TelaNewUser extends javax.swing.JFrame {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Procurar Arquivo");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        
+
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Imagem", "jpg", "jpeg", "png");
-        
+
         fileChooser.setFileFilter(filter);
         int retorno = fileChooser.showOpenDialog(this);
-        
+
         if(retorno == JFileChooser.APPROVE_OPTION) {
             File arquivo = fileChooser.getSelectedFile();
             try{
@@ -307,15 +298,32 @@ public class TelaNewUser extends javax.swing.JFrame {
                 txtFoto.setText(arquivo.getAbsolutePath());
                 lblIcon.setIcon(new ImageIcon(imagem));
             } catch (Exception ex){
-                
+
             }
         }
     }//GEN-LAST:event_btnFotoActionPerformed
 
+    private void jcbEmergenciaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbEmergenciaItemStateChanged
+        if(jcbEmergencia.getSelectedItem().toString() == "Sim")
+        txtAreaEmergencia.setEnabled(true);
+        else
+        txtAreaEmergencia.setEnabled(false);
+    }//GEN-LAST:event_jcbEmergenciaItemStateChanged
+
+    private void btnAddTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTelActionPerformed
+        TelaNewT telaNewT = new TelaNewT(new javax.swing.JFrame(), true);
+        telaNewT.setVisible(true);
+    }//GEN-LAST:event_btnAddTelActionPerformed
+
+    private void btnNewFamiliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewFamiliarActionPerformed
+        TelaNewF telaNewF = new TelaNewF(new javax.swing.JFrame(), true);
+        telaNewF.setVisible(true);
+    }//GEN-LAST:event_btnNewFamiliarActionPerformed
+
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         if(txtNome.getText().isBlank() || txtEndereco.getText().isBlank() ||
-           txtNum.getText().isBlank()  || txtEmail.getText().isBlank() ||
-           jcbEmergencia.getSelectedIndex() == 0) {
+            txtNum.getText().isBlank()  || txtEmail.getText().isBlank() ||
+            jcbEmergencia.getSelectedIndex() == 0) {
             TelaWarningBranco telaW = new TelaWarningBranco(new javax.swing.JFrame(), true);
             telaW.setVisible(true);
         } else {
@@ -334,27 +342,6 @@ public class TelaNewUser extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnAddTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTelActionPerformed
-        TelaNewT telaNewT = new TelaNewT(new javax.swing.JFrame(), true);
-        telaNewT.setVisible(true);
-    }//GEN-LAST:event_btnAddTelActionPerformed
-
-    private void btnNewFamiliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewFamiliarActionPerformed
-        TelaNewF telaNewF = new TelaNewF(new javax.swing.JFrame(), true);
-        telaNewF.setVisible(true);
-    }//GEN-LAST:event_btnNewFamiliarActionPerformed
-
-    private void jcbEmergenciaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbEmergenciaItemStateChanged
-        if(jcbEmergencia.getSelectedItem().toString() == "Sim")
-            txtAreaEmergencia.setEnabled(true);
-        else
-            txtAreaEmergencia.setEnabled(false);
-    }//GEN-LAST:event_jcbEmergenciaItemStateChanged
-
     /**
      * @param args the command line arguments
      */
@@ -372,20 +359,27 @@ public class TelaNewUser extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaNewUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNewUser2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaNewUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNewUser2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaNewUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNewUser2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaNewUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNewUser2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaNewUser().setVisible(true);
+                TelaNewUser2 dialog = new TelaNewUser2(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -393,7 +387,6 @@ public class TelaNewUser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddTel;
     private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnFoto;
     private javax.swing.JButton btnNewFamiliar;
     private javax.swing.JPanel jPanel1;

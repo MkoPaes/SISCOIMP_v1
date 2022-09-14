@@ -79,7 +79,7 @@ public class Dados {
     //getters
 
     public boolean HasUser(){
-        return hasUser;
+        return (user != null);
     }
     
     public boolean HasAgendamentos(){
@@ -93,12 +93,11 @@ public class Dados {
     public User getUser(){
         return user;
     }
-    public void setUser(String nome, String endereco, String email, String eInfo, BufferedImage foto, ArrayList<Telefone> tel,
-    ArrayList<Familiar> familiares){
+    public void setUser(String nome, String endereco, String email, String eInfo, BufferedImage foto){
         if(user == null){
-            user = new User(nome,endereco,email,eInfo, foto, tel, familiares);
+            user = new User(nome,endereco,email,eInfo, foto);
         }
-        user.setUser(nome,endereco,email,eInfo, foto, tel, familiares);
+        user.setUser(nome,endereco,email,eInfo, foto);
     }
 
     public ArrayList<Agendamento> getListaAgendamentos(){

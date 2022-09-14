@@ -18,15 +18,14 @@ public class User implements Storeable{
 
     public User(){}
 
-    public User(String nome, String endereco, String email, String eInfo, BufferedImage foto, ArrayList<Telefone> tel,
-            ArrayList<Familiar> familiares) {
+    public User(String nome, String endereco, String email, String eInfo, BufferedImage foto) {
         this.nome = nome;
         this.endereco = endereco;
         this.email = email;
         this.eInfo = eInfo;
         this.foto = foto;
-        this.tel = tel;
-        this.familiares = familiares;
+        tel = new ArrayList<Telefone>();
+        familiares = new ArrayList<Familiar>();
     }
 
     public String getNome() {
@@ -89,14 +88,13 @@ public class User implements Storeable{
         return fileID;
     }
 
-    public void setUser(String nome, String endereco, String email, String eInfo, BufferedImage foto, ArrayList<Telefone> tel,
-            ArrayList<Familiar> familiares) {
+    public void setUser(String nome, String endereco, String email, String eInfo, BufferedImage foto) {
         this.nome = nome;
         this.endereco = endereco;
         this.email = email;
         this.eInfo = eInfo;
         this.foto = foto;
-        this.tel = tel;
-        this.familiares = familiares;
+        this.tel = new ArrayList<Telefone>();
+        this.familiares = new ArrayList<Familiar>();
     }
 }
