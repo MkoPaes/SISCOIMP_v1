@@ -5,6 +5,8 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import controllers.Dados;
+
 public class TelaViewUser extends javax.swing.JDialog {
 
     // Construtor
@@ -441,6 +443,8 @@ public class TelaViewUser extends javax.swing.JDialog {
             btnEdit.setEnabled(true);
             
             // Aqui vai o código para salvar de fato
+
+            Dados.getInstance().setUser(txtNome.getText(), txtEndereco.getText(), txtEmail.getText(), txtEmergencia.getText());
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 

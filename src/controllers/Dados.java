@@ -92,20 +92,38 @@ public class Dados {
         if(user == null){
             user = new User(nome,endereco,email,eInfo, foto);
         }
-        user.setUser(nome,endereco,email,eInfo, foto);
+        else{
+            user.setNome(nome);
+            user.setEndereco(endereco);
+            user.setEmail(email);
+            user.seteInfo(eInfo);
+            user.setFoto(foto);
+        }
+    }
+
+    public void setUser(String nome, String endereco, String email, String eInfo){
+        if(user == null){
+            user = new User(nome,endereco,email,eInfo, null);
+        }
+        else{
+            user.setNome(nome);
+            user.setEndereco(endereco);
+            user.setEmail(email);
+            user.seteInfo(eInfo);
+        }
     }
 
     public ArrayList<Agendamento> getListaAgendamentos(){
         return listaAgendamentos;
     }
-    public void addListaAgendamentos(Agendamento a){
+    public void addAgendamento(Agendamento a){
         listaAgendamentos.add(a);
     }
 
     public ArrayList<Profissional> getListaProfissionais(){
         return listaProfissionais;
     }
-    public void addListaProfissionais(Profissional p){
+    public void addProfissional(Profissional p){
         listaProfissionais.add(p);
     }
 }

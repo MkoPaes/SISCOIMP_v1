@@ -3,6 +3,10 @@ package view;
 import java.awt.Color;
 import java.util.Calendar;
 
+import controllers.Dados;
+import model.Agendamento;
+import model.Data;
+
 public class TelaNewE extends javax.swing.JDialog {
     private Calendar cal;
     
@@ -143,6 +147,14 @@ public class TelaNewE extends javax.swing.JDialog {
             TelaWarningBranco telaW = new TelaWarningBranco(new javax.swing.JFrame(), true);
             telaW.setVisible(true);
         } else {
+            try {
+                int horas[] = { 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23};
+                int mins[] = { 0, 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55};
+                Data data = new Data(Integer.parseInt(txtFData.getText(0, 2)), Integer.parseInt(txtFData.getText(4, 2)), Integer.parseInt(txtFData.getText(5, 4)), horas[jcbHora.getSelectedIndex()], mins[jcbMin.getSelectedIndex()]);
+                Dados.getInstance().addAgendamento(new Agendamento(data));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             // Aqui vai o código para salvar de fato
             this.dispose();
         }

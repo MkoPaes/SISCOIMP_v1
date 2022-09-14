@@ -5,6 +5,10 @@ import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import controllers.Dados;
+import model.Profissional;
+import model.Telefone;
 import utils.ManipulaImagem;
 
 public class TelaNewP extends javax.swing.JDialog {
@@ -236,6 +240,7 @@ public class TelaNewP extends javax.swing.JDialog {
             TelaWarningBranco telaW = new TelaWarningBranco(new javax.swing.JFrame(), true);
             telaW.setVisible(true);
         } else {
+            Dados.getInstance().addProfissional(new Profissional(txtNome.getText(),txtEndereco.getText(), imagem, new Telefone(txtFDDD.getText(), txtFTel.getText())));
             // Aqui vai o código para salvar de fato
             this.dispose();
         }

@@ -1,28 +1,29 @@
 package model;
 
 import storage.Storeable;
+import java.util.UUID;  
 
 public class Agendamento implements Storeable{
     
     private String fileID = "agendamento";
     
-    private String id;
+    private UUID uuid;
     private Data data;
     private Resultado resultado;
 
     public Agendamento(){}
 
-    public Agendamento(String id, Data data) {
-        this.id = id;
+    public Agendamento(Data data) {
+        this.setId();
         this.data = data;
     }
 
-    public String getId() {
-        return id;
+    public UUID getId() {
+        return uuid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId() {
+        this.uuid = UUID.randomUUID(); //Generates random UUID  
     }
 
     public Data getData() {

@@ -95,14 +95,4 @@ public class User implements Storeable{
     public String getFileID(){
         return fileID;
     }
-
-    public void setUser(String nome, String endereco, String email, String eInfo, BufferedImage foto) {
-        this.nome = nome;
-        this.endereco = endereco;
-        this.email = email;
-        this.eInfo = eInfo;
-        this.foto = foto;
-        this.tel = new ArrayList<Telefone>();
-        this.familiares = new ArrayList<Familiar>();
-    }
 }
