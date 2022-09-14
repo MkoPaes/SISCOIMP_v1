@@ -6,6 +6,7 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controllers.Dados;
+import model.Endereco;
 import model.User;
 
 public class TelaViewUser extends javax.swing.JDialog {
@@ -65,13 +66,21 @@ public class TelaViewUser extends javax.swing.JDialog {
         setTitle("Seus Dados");
         setModal(true);
         setResizable(false);
+        
+        //Carrega os dados
+        if (hasUser){
+            txtNome.setText(user.getNome());
+            txtEndereco.setText(user.getEndereco().getEndereco());
+            txtNum.setText(user.getEndereco().getNumero());
+            txtEmail.setText(user.getEmail());
+            txtEmergencia.setText(user.geteInfo());
+        }
 
         jPanelDados.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados Pessoais"));
 
         lblNome.setText("Nome");
 
-        if (hasUser)txtNome.setText(user.getNome());
-
+        
         txtNome.setEditable(false);
         txtNome.setBackground(new java.awt.Color(204, 204, 204));
         txtNome.addActionListener(new java.awt.event.ActionListener() {
@@ -81,8 +90,6 @@ public class TelaViewUser extends javax.swing.JDialog {
         });
 
         lblEndereco.setText("Endereço");
-
-        if (hasUser)txtEndereco.setText(user.getEndereco());
 
         txtEndereco.setEditable(false);
         txtEndereco.setBackground(new java.awt.Color(204, 204, 204));
@@ -95,8 +102,6 @@ public class TelaViewUser extends javax.swing.JDialog {
         lblNum.setText("Número");
 
         lblEmail.setText("Email");
-
-        if (hasUser)txtEmail.setText(user.getEmail());
 
         txtEmail.setEditable(false);
         txtEmail.setBackground(new java.awt.Color(204, 204, 204));
@@ -112,8 +117,6 @@ public class TelaViewUser extends javax.swing.JDialog {
         });
 
         lblEmergencia.setText("Informações de Emergência");
-        
-        if (hasUser)txtEmergencia.setText(user.geteInfo());
 
         txtEmergencia.setEditable(false);
         txtEmergencia.setBackground(new java.awt.Color(204, 204, 204));
@@ -457,7 +460,7 @@ public class TelaViewUser extends javax.swing.JDialog {
             
             // Aqui vai o código para salvar de fato
 
-            Dados.getInstance().setUser(txtNome.getText(), txtEndereco.getText(), txtEmail.getText(), txtEmergencia.getText());
+            Dados.getInstance().setUser(txtNome.getText(), new Endereco(txtEndereco.getText(), txtNum.getText()), txtEmail.getText(), txtEmergencia.getText());
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 

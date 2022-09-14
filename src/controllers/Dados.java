@@ -88,7 +88,7 @@ public class Dados {
     public User getUser(){
         return user;
     }
-    public void setUser(String nome, String endereco, String email, String eInfo, BufferedImage foto){
+    public void setUser(String nome, Endereco endereco, String email, String eInfo, BufferedImage foto){
         if(user == null){
             user = new User(nome,endereco,email,eInfo, foto);
         }
@@ -101,7 +101,7 @@ public class Dados {
         }
     }
 
-    public void setUser(String nome, String endereco, String email, String eInfo){
+    public void setUser(String nome, Endereco endereco, String email, String eInfo){
         if(user == null){
             user = new User(nome,endereco,email,eInfo, null);
         }

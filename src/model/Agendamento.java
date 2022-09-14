@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class Agendamento implements Storeable{
     
-    private String fileID = "agendamento";
+    private String fileID = "storage/agendamento";
     
     private UUID uuid;
     private Data data;

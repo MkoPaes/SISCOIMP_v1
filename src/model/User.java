@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import storage.Storeable;
 
 public class User implements Storeable{
-    private String fileID = "user";
+    private String fileID = "storage/user";
 
     private String nome;
-    private String endereco;
+    private Endereco endereco;
     private String email;
     private String eInfo; // Informações de Emergência
     private BufferedImage foto;
@@ -18,7 +18,7 @@ public class User implements Storeable{
 
     public User(){}
 
-    public User(String nome, String endereco, String email, String eInfo, BufferedImage foto) {
+    public User(String nome, Endereco endereco, String email, String eInfo, BufferedImage foto) {
         this.nome = nome;
         this.endereco = endereco;
         this.email = email;
@@ -36,11 +36,11 @@ public class User implements Storeable{
         this.nome = nome;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 

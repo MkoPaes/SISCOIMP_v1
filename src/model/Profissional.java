@@ -5,18 +5,18 @@ import java.awt.image.BufferedImage;
 import storage.Storeable;
 
 public class Profissional implements Storeable{
-    private String fileID = "profissional";
+    private String fileID = "storage/profissional";
 
     private String nome;
-    private String endereco;
+    private Endereco endereco;
     private BufferedImage foto;
     private Telefone tel;
 
     public Profissional(){}
     
-    public Profissional(String nome, String endereco, BufferedImage foto, Telefone tel){
+    public Profissional(String nome, Endereco endereco, BufferedImage foto, Telefone tel){
         this.nome = nome;
-        this.endereco = nome;
+        this.endereco = endereco;
         this.foto = foto;
         this.tel = tel;
     }
@@ -29,11 +29,11 @@ public class Profissional implements Storeable{
         this.nome = nome;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 
