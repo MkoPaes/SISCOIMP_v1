@@ -436,6 +436,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pnTitle.setPreferredSize(new java.awt.Dimension(0, 50));
 
         lblPagTitle.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        lblPagTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPagTitle.setText("Seja bem-vindo");
 
         javax.swing.GroupLayout pnTitleLayout = new javax.swing.GroupLayout(pnTitle);
@@ -443,9 +444,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pnTitleLayout.setHorizontalGroup(
             pnTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnTitleLayout.createSequentialGroup()
-                .addContainerGap(286, Short.MAX_VALUE)
-                .addComponent(lblPagTitle)
-                .addContainerGap(286, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblPagTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnTitleLayout.setVerticalGroup(
             pnTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -464,9 +465,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pnTop.setBackground(new java.awt.Color(255, 255, 255));
         pnTop.setPreferredSize(new java.awt.Dimension(100, 100));
 
+        lblTitleProgram.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitleProgram.setText("Sistema de Controle de Informações Médicas Pessoal ");
 
         lblTitleSigla.setFont(new java.awt.Font("Century", 0, 36)); // NOI18N
+        lblTitleSigla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitleSigla.setText("SISCOIMP");
 
         javax.swing.GroupLayout pnTopLayout = new javax.swing.GroupLayout(pnTop);
@@ -474,13 +477,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pnTopLayout.setHorizontalGroup(
             pnTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnTopLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTitleSigla)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTopLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTitleProgram)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(pnTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTitleSigla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTitleProgram, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE))
+                .addContainerGap())
         );
         pnTopLayout.setVerticalGroup(
             pnTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -497,23 +498,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pnCenter2.setBackground(new java.awt.Color(255, 255, 255));
         pnCenter2.setPreferredSize(new java.awt.Dimension(100, 100));
 
+        lblLogo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Logo_128px.png"))); // NOI18N
 
         lblAjuda.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        lblAjuda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAjuda.setText("Como posso ajudar?");
 
         javax.swing.GroupLayout pnCenter2Layout = new javax.swing.GroupLayout(pnCenter2);
         pnCenter2.setLayout(pnCenter2Layout);
         pnCenter2Layout.setHorizontalGroup(
             pnCenter2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCenter2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblLogo1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnCenter2Layout.createSequentialGroup()
-                .addContainerGap(265, Short.MAX_VALUE)
-                .addComponent(lblAjuda)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblLogo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnCenter2Layout.createSequentialGroup()
+                .addComponent(lblAjuda, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnCenter2Layout.setVerticalGroup(
             pnCenter2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -720,7 +721,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "Id", "Telefone"
+                "Nome", "Telefone"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -842,10 +843,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                     .addComponent(jsEmergencia)
                                     .addComponent(txtEmail)
                                     .addComponent(txtNome))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                                 .addGroup(pnDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(iconFoto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnEditFoto, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addComponent(btnEditFoto, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(83, 83, 83))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDadosLayout.createSequentialGroup()
                                 .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -948,8 +950,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         lblFotoIconP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblFotoIconP.setText("FotoAqui");
+        lblFotoIconP.setToolTipText("");
         lblFotoIconP.setAlignmentY(0.0F);
+        lblFotoIconP.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         lblFotoIconP.setMaximumSize(new java.awt.Dimension(150, 150));
         lblFotoIconP.setMinimumSize(new java.awt.Dimension(0, 0));
         lblFotoIconP.setPreferredSize(new java.awt.Dimension(150, 150));
@@ -1110,12 +1113,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(148, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(148, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEditA, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditA, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -1201,13 +1202,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-      // Aqui temos que revisar
-      /*  if(!Dados.getInstance().hasUser()){
-       *     TelaNewUser newUser = new TelaNewUser(new javax.swing.JFrame(), true);
-       *     newUser.setVisible(true);
-       *  } else {*/
+        //if(!Dados.getInstance().hasUser()){
+          //  TelaNewUser newUser = new TelaNewUser(new javax.swing.JFrame(), true);
+          //  newUser.setVisible(true);
+        //} else {
             cardLayout.show(pnCards, "pnMain");
-      //  }
+        //}
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
