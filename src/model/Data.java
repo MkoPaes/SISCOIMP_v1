@@ -17,6 +17,18 @@ public class Data implements Serializable{
         this.minuto = minuto;
     }
 
+    public boolean isClose(Data d){
+        return this.ano == d.getAno() && 
+            this.mes == d.getMes() &&
+            this.dia == d.getDia();
+    }
+
+    public boolean equals(Data d){
+        return isClose(d) &&
+            this.hora == d.getHora() &&
+            this.minuto == d.getMinuto();
+    }
+
     public int getDia() {
         return dia;
     }

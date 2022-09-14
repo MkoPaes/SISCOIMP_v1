@@ -116,8 +116,30 @@ public class Dados {
     public ArrayList<Agendamento> getListaAgendamentos(){
         return listaAgendamentos;
     }
-    public void addAgendamento(Agendamento a){
+    public boolean addAgendamento(Agendamento a){
+        for (Agendamento ag : listaAgendamentos) {
+            if(ag.getData().equals(a.getData())){
+                return false;
+            }
+        }
         listaAgendamentos.add(a);
+        return true;
+    }
+    public boolean agendamentoProximo(Agendamento a){
+        for (Agendamento ag : listaAgendamentos) {
+            if(ag.getData().isClose(a.getData())){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean agendamentoProximo(Data d){
+        for (Agendamento ag : listaAgendamentos) {
+            if(ag.getData().isClose(d)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public ArrayList<Profissional> getListaProfissionais(){
