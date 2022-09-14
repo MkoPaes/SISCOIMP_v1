@@ -6,11 +6,14 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controllers.Dados;
+import model.User;
 
 public class TelaViewUser extends javax.swing.JDialog {
 
+
     // Construtor
     public TelaViewUser(java.awt.Frame parent, boolean modal) {
+
         super(parent, modal);
         initComponents();
         
@@ -24,6 +27,8 @@ public class TelaViewUser extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        boolean hasUser = Dados.getInstance().hasUser();
+        User user = Dados.getInstance().getUser();
 
         jPanel1 = new javax.swing.JPanel();
         jPanelDados = new javax.swing.JPanel();
@@ -65,6 +70,8 @@ public class TelaViewUser extends javax.swing.JDialog {
 
         lblNome.setText("Nome");
 
+        if (hasUser)txtNome.setText(user.getNome());
+
         txtNome.setEditable(false);
         txtNome.setBackground(new java.awt.Color(204, 204, 204));
         txtNome.addActionListener(new java.awt.event.ActionListener() {
@@ -74,6 +81,8 @@ public class TelaViewUser extends javax.swing.JDialog {
         });
 
         lblEndereco.setText("Endereço");
+
+        if (hasUser)txtEndereco.setText(user.getEndereco());
 
         txtEndereco.setEditable(false);
         txtEndereco.setBackground(new java.awt.Color(204, 204, 204));
@@ -86,6 +95,8 @@ public class TelaViewUser extends javax.swing.JDialog {
         lblNum.setText("Número");
 
         lblEmail.setText("Email");
+
+        if (hasUser)txtEmail.setText(user.getEmail());
 
         txtEmail.setEditable(false);
         txtEmail.setBackground(new java.awt.Color(204, 204, 204));
@@ -101,6 +112,8 @@ public class TelaViewUser extends javax.swing.JDialog {
         });
 
         lblEmergencia.setText("Informações de Emergência");
+        
+        if (hasUser)txtEmergencia.setText(user.geteInfo());
 
         txtEmergencia.setEditable(false);
         txtEmergencia.setBackground(new java.awt.Color(204, 204, 204));

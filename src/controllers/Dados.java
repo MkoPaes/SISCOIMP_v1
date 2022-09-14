@@ -73,15 +73,15 @@ public class Dados {
     
     //getters
 
-    public boolean HasUser(){
+    public boolean hasUser(){
         return (user != null);
     }
     
-    public boolean HasAgendamentos(){
+    public boolean hasAgendamentos(){
         return !listaAgendamentos.isEmpty();
     }
     
-    public boolean HasProfissionais(){
+    public boolean hasProfissionais(){
         return !listaProfissionais.isEmpty();
     }
 
