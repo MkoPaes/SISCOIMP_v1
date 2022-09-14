@@ -60,6 +60,8 @@ public class Dados {
         
         return (i > 1) && (obj != null);
     }
+   
+    //Salvar nos arquivos
 
     public boolean SalvaDados(){
         boolean success = true;
@@ -69,6 +71,18 @@ public class Dados {
         if(!writeArray(listaProfissionais)) success = false;
 
         return success;
+    }
+
+
+    public boolean SalvaUser(){
+        return Database.writeObjToFile(user);
+    }
+
+    public boolean SalvaAgendamento(){
+        return writeArray(listaAgendamentos);
+    }
+    public boolean SalvaProfissionais(){
+        return writeArray(listaProfissionais);
     }
     
     //getters
@@ -86,9 +100,12 @@ public class Dados {
     }
 
     public User getUser(){
+        if(!hasUser()){
+            this.user = Database.readObjFromFile(new User());
+        }
         return user;
     }
-    public void setUser(String nome, Endereco endereco, String email, String eInfo, BufferedImage foto){
+    public boolean setUser(String nome, Endereco endereco, String email, String eInfo, BufferedImage foto){
         if(user == null){
             user = new User(nome,endereco,email,eInfo, foto);
         }
@@ -99,9 +116,11 @@ public class Dados {
             user.seteInfo(eInfo);
             user.setFoto(foto);
         }
+
+        return SalvaUser();
     }
 
-    public void setUser(String nome, Endereco endereco, String email, String eInfo){
+    public boolean setUser(String nome, Endereco endereco, String email, String eInfo){
         if(user == null){
             user = new User(nome,endereco,email,eInfo, null);
         }
@@ -111,6 +130,8 @@ public class Dados {
             user.setEmail(email);
             user.seteInfo(eInfo);
         }
+
+        return SalvaUser();
     }
 
     public ArrayList<Agendamento> getListaAgendamentos(){

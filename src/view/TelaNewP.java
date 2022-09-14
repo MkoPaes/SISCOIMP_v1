@@ -241,8 +241,9 @@ public class TelaNewP extends javax.swing.JDialog {
             TelaWarningBranco telaW = new TelaWarningBranco(new javax.swing.JFrame(), true);
             telaW.setVisible(true);
         } else {
-            Dados.getInstance().addProfissional(new Profissional(txtNome.getText(),new Endereco(txtEndereco.getText(),txtNum.getText()), imagem, new Telefone(txtFDDD.getText(), txtFTel.getText())));
             // Aqui vai o código para salvar de fato
+            Dados.getInstance().addProfissional(new Profissional(txtNome.getText(),new Endereco(txtEndereco.getText(),txtNum.getText()), imagem, new Telefone(txtFDDD.getText(), txtFTel.getText())));
+            Dados.getInstance().SalvaProfissionais();
             this.dispose();
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed

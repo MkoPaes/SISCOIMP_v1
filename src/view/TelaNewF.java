@@ -132,6 +132,7 @@ public class TelaNewF extends javax.swing.JDialog {
         } else {
             // Aqui vai o código para salvar de fato
             Dados.getInstance().getUser().addFamiliares(new Familiar(txtNome.getText(), new Telefone(txtFDDD.getText(), txtFTel.getText())));
+            Dados.getInstance().SalvaUser();
             this.dispose();
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed

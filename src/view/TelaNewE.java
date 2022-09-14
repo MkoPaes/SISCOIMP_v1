@@ -154,8 +154,9 @@ public class TelaNewE extends javax.swing.JDialog {
                 if(Dados.getInstance().agendamentoProximo(data)){
                     //existem agendamentos no mesmo dia
                 }
-                if(!Dados.getInstance().addAgendamento(new Agendamento(data))){
-                    //Ja existe agendamento com a mesma data
+                if(Dados.getInstance().addAgendamento(new Agendamento(data))){
+                   //Agendamento não tem a mesma data
+                   Dados.getInstance().SalvaAgendamento();
                 }
                 
             } catch (Exception e) {
