@@ -89,7 +89,7 @@ public class Dados {
 
     private User getUser(){
         if(!hasUser()){
-            return new User();
+        user = new User();
         }
         return user;
     }

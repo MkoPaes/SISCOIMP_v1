@@ -1202,12 +1202,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        //if(!Dados.getInstance().hasUser()){
-          //  TelaNewUser newUser = new TelaNewUser(new javax.swing.JFrame(), true);
-          //  newUser.setVisible(true);
-        //} else {
+        if(!Dados.getInstance().hasUser()){
+            TelaNewUser newUser = new TelaNewUser(new javax.swing.JFrame(), true);
+            newUser.setVisible(true);
+        } else {
             cardLayout.show(pnCards, "pnMain");
-        //}
+        }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
