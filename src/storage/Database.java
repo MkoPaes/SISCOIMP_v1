@@ -58,7 +58,7 @@ public class Database{
     }
 
     /**
-    * Save an Object in a file named = obj.getID().
+    * Save an Object in a file named = obj.getFileID().
     * Return true on success, or false on error.
     */
     public static boolean writeObjToFile(Storeable obj){
@@ -67,7 +67,7 @@ public class Database{
     }
 
     /**
-     * Load Object from file named = obj.getID().
+     * Load Object from file named = obj.getFileID().
      * Return the object readed from file on success.
      * Return null on error.
      */
