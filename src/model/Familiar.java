@@ -1,6 +1,8 @@
 package model;
 
-public class Familiar {
+import java.io.Serializable;
+
+public class Familiar implements Serializable{
     private String nome;
     private Telefone tel;
     

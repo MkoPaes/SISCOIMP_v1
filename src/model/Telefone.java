@@ -1,6 +1,8 @@
 package model;
 
-public class Telefone {
+import java.io.Serializable;
+
+public class Telefone implements Serializable{
     private String ddd;
     private String num;
     
