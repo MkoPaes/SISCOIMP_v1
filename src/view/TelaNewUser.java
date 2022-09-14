@@ -11,12 +11,15 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controllers.Dados;
+import model.Endereco;
 import utils.ManipulaImagem;
 
-public class TelaNewUser extends javax.swing.JFrame {
+public class TelaNewUser extends javax.swing.JDialog {
     BufferedImage imagem = null;
-            
-    public TelaNewUser() {
+
+    // Construtor
+    public TelaNewUser(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -45,7 +48,7 @@ public class TelaNewUser extends javax.swing.JFrame {
         lblEmergencia = new javax.swing.JLabel();
         jcbEmergencia = new javax.swing.JComboBox<>();
         jspEmergencia = new javax.swing.JScrollPane();
-        txtAreaEmergencia = new javax.swing.JTextArea();
+        txtEmergencia = new javax.swing.JTextArea();
         lblIcon = new javax.swing.JLabel();
         jPanelContato = new javax.swing.JPanel();
         lblTel = new javax.swing.JLabel();
@@ -55,8 +58,8 @@ public class TelaNewUser extends javax.swing.JFrame {
         btnCadastrar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastro");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro Usuário");
         setResizable(false);
 
         jPanelDados.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados Pessoais"));
@@ -91,11 +94,11 @@ public class TelaNewUser extends javax.swing.JFrame {
             }
         });
 
-        txtAreaEmergencia.setBackground(new java.awt.Color(255, 255, 255));
-        txtAreaEmergencia.setColumns(20);
-        txtAreaEmergencia.setRows(5);
-        txtAreaEmergencia.setEnabled(false);
-        jspEmergencia.setViewportView(txtAreaEmergencia);
+        txtEmergencia.setBackground(new java.awt.Color(255, 255, 255));
+        txtEmergencia.setColumns(20);
+        txtEmergencia.setRows(5);
+        txtEmergencia.setEnabled(false);
+        jspEmergencia.setViewportView(txtEmergencia);
 
         lblIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblIcon.setAlignmentY(0.0F);
@@ -255,7 +258,7 @@ public class TelaNewUser extends javax.swing.JFrame {
                             .addComponent(jPanelContato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanelDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
+                        .addGap(142, 142, 142)
                         .addComponent(btnCadastrar)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelar)))
@@ -294,12 +297,12 @@ public class TelaNewUser extends javax.swing.JFrame {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Procurar Arquivo");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        
+
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Imagem", "jpg", "jpeg", "png");
-        
+
         fileChooser.setFileFilter(filter);
         int retorno = fileChooser.showOpenDialog(this);
-        
+
         if(retorno == JFileChooser.APPROVE_OPTION) {
             File arquivo = fileChooser.getSelectedFile();
             try{
@@ -307,10 +310,27 @@ public class TelaNewUser extends javax.swing.JFrame {
                 txtFoto.setText(arquivo.getAbsolutePath());
                 lblIcon.setIcon(new ImageIcon(imagem));
             } catch (Exception ex){
-                
+
             }
         }
     }//GEN-LAST:event_btnFotoActionPerformed
+
+    private void jcbEmergenciaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbEmergenciaItemStateChanged
+        if(jcbEmergencia.getSelectedItem().toString() == "Sim")
+            txtEmergencia.setEnabled(true);
+        else
+            txtEmergencia.setEnabled(false);
+    }//GEN-LAST:event_jcbEmergenciaItemStateChanged
+
+    private void btnAddTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTelActionPerformed
+        TelaNewT telaNewT = new TelaNewT(new javax.swing.JFrame(), true);
+        telaNewT.setVisible(true);
+    }//GEN-LAST:event_btnAddTelActionPerformed
+
+    private void btnNewFamiliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewFamiliarActionPerformed
+        TelaNewF telaNewF = new TelaNewF(new javax.swing.JFrame(), true);
+        telaNewF.setVisible(true);
+    }//GEN-LAST:event_btnNewFamiliarActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         if(txtNome.getText().isBlank() || txtEndereco.getText().isBlank() ||
@@ -329,7 +349,7 @@ public class TelaNewUser extends javax.swing.JFrame {
                     Logger.getLogger(TelaNewUser.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            Dados.getInstance().setUser(txtNome.getText(), txtEndereco.getText(), txtEmail.getText(), txtAreaEmergencia.getText(), imagem);
+            Dados.getInstance().setUser(txtNome.getText(), new Endereco(txtEndereco.getText(), txtNum.getText()), txtEmail.getText(), txtEmergencia.getText());
             this.dispose();
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
@@ -337,23 +357,6 @@ public class TelaNewUser extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnAddTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTelActionPerformed
-        TelaNewT telaNewT = new TelaNewT(new javax.swing.JFrame(), true);
-        telaNewT.setVisible(true);
-    }//GEN-LAST:event_btnAddTelActionPerformed
-
-    private void btnNewFamiliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewFamiliarActionPerformed
-        TelaNewF telaNewF = new TelaNewF(new javax.swing.JFrame(), true);
-        telaNewF.setVisible(true);
-    }//GEN-LAST:event_btnNewFamiliarActionPerformed
-
-    private void jcbEmergenciaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbEmergenciaItemStateChanged
-        if(jcbEmergencia.getSelectedItem().toString() == "Sim")
-            txtAreaEmergencia.setEnabled(true);
-        else
-            txtAreaEmergencia.setEnabled(false);
-    }//GEN-LAST:event_jcbEmergenciaItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -381,11 +384,19 @@ public class TelaNewUser extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaNewUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaNewUser().setVisible(true);
+                TelaNewUser dialog = new TelaNewUser(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -410,8 +421,8 @@ public class TelaNewUser extends javax.swing.JFrame {
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNum;
     private javax.swing.JLabel lblTel;
-    private javax.swing.JTextArea txtAreaEmergencia;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextArea txtEmergencia;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtFoto;
     private javax.swing.JTextField txtNome;
