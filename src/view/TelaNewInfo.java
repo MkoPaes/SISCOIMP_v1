@@ -1,5 +1,7 @@
 package view;
 
+import controllers.Dados;
+
 public class TelaNewInfo extends javax.swing.JDialog {
 
     // Construtor
@@ -79,6 +81,7 @@ public class TelaNewInfo extends javax.swing.JDialog {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // Aqui vai o código para salvar de fato
+        Dados.getInstance().SetUsereInfo(jTextArea.getText());
         this.dispose();
     }//GEN-LAST:event_btnSalvarActionPerformed
 

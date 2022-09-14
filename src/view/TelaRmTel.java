@@ -1,5 +1,7 @@
 package view;
 
+import controllers.Dados;
+
 public class TelaRmTel extends javax.swing.JDialog {
 
     // Construtor
@@ -77,6 +79,8 @@ public class TelaRmTel extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        
+        Dados.getInstance().removeUserTel(jcbTel.getSelectedIndex() - 1);
         this.dispose();
     }//GEN-LAST:event_btnRemoverActionPerformed
 

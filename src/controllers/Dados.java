@@ -87,8 +87,20 @@ public class Dados {
     
     //getters
 
+    private User getUser(){
+        if(!hasUser()){
+            return new User();
+        }
+        return user;
+    }
+
     public boolean hasUser(){
-        return (user != null);
+        if (user == null) {
+            user = Database.readObjFromFile(new User());
+            return (user != null);
+        }
+
+        return true;
     }
     
     public boolean hasAgendamentos(){
@@ -99,43 +111,56 @@ public class Dados {
         return !listaProfissionais.isEmpty();
     }
 
-    public User getUser(){
-        if(!hasUser()){
-            this.user = Database.readObjFromFile(new User());
-        }
-        return user;
-    }
     public boolean setUser(String nome, Endereco endereco, String email, String eInfo, BufferedImage foto){
-        if(user == null){
-            user = new User(nome,endereco,email,eInfo, foto);
-        }
-        else{
-            user.setNome(nome);
-            user.setEndereco(endereco);
-            user.setEmail(email);
-            user.seteInfo(eInfo);
-            user.setFoto(foto);
-        }
+        getUser().setNome(nome);
+        getUser().setEndereco(endereco);
+        getUser().setEmail(email);
+        getUser().seteInfo(eInfo);
+        getUser().setFoto(foto);
 
         return SalvaUser();
     }
 
     public boolean setUser(String nome, Endereco endereco, String email, String eInfo){
-        if(user == null){
-            user = new User(nome,endereco,email,eInfo, null);
-        }
-        else{
-            user.setNome(nome);
-            user.setEndereco(endereco);
-            user.setEmail(email);
-            user.seteInfo(eInfo);
-        }
+        getUser().setNome(nome);
+        getUser().setEndereco(endereco);
+        getUser().setEmail(email);
+        getUser().seteInfo(eInfo);
 
         return SalvaUser();
     }
 
-    public ArrayList<Agendamento> getListaAgendamentos(){
-        return listaAgendamentos;
+    public boolean SetUsereInfo(String eInfo){      
+        
+        getUser().seteInfo(eInfo);
+        
+        return SalvaUser();
+    }
+
+    public boolean addUserTel(Telefone t){
+        getUser().addTel(t);
+
+        return SalvaUser();
+    }
+
+    public void removeUserTel(int index){
+        if(hasUser()){
+            user.removeTel(index);
+        }
+    }
+
+    public boolean addUserFamiliar(Familiar f){
+        getUser().addFamiliares(f);
+        return SalvaUser();
+    }
+    public void removeUserFamiliar(int index){
+        if(hasUser()){
+            user.removeFamiliar(index);
+        }
+    }
+
+    public Object[] getAgendamentosArray(){
+        return listaAgendamentos.toArray();
     }
     public boolean addAgendamento(Agendamento a){
         for (Agendamento ag : listaAgendamentos) {
@@ -144,6 +169,7 @@ public class Dados {
             }
         }
         listaAgendamentos.add(a);
+        SalvaAgendamento();
         return true;
     }
     public boolean agendamentoProximo(Agendamento a){
@@ -163,10 +189,11 @@ public class Dados {
         return false;
     }
 
-    public ArrayList<Profissional> getListaProfissionais(){
-        return listaProfissionais;
+    public Object[] getProfissionaisArray(){
+        return listaProfissionais.toArray();
     }
     public void addProfissional(Profissional p){
         listaProfissionais.add(p);
+        SalvaProfissionais();
     }
 }

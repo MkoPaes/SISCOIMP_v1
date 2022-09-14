@@ -80,6 +80,12 @@ public class User implements Storeable{
         this.tel.add(t);
     }
 
+    public void removeTel(int index){
+        if((index > 0) && (index < this.tel.size())){
+            tel.remove(index);
+        }
+    }
+
     public ArrayList<Familiar> getFamiliares() {
         return familiares;
     }
@@ -90,6 +96,12 @@ public class User implements Storeable{
 
     public void addFamiliares(Familiar familiar){
         this.familiares.add(familiar);
+    }
+
+    public void removeFamiliar(int index){
+        if((index > 0) && (index < this.familiares.size())){
+            familiares.remove(index);
+        }
     }
     
     public String getFileID(){
