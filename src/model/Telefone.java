@@ -1,27 +1,27 @@
 package model;
 
 public class Telefone {
-    private int ddd;
-    private int num;
+    private String ddd;
+    private String num;
     
-    public Telefone(int ddd, int num){
+    public Telefone(String ddd, String num){
         this.ddd = ddd;
         this.num = num;
     }
 
-    public int getDdd() {
+    public String getDdd() {
         return ddd;
     }
 
-    public void setDdd(int ddd) {
+    public void setDdd(String ddd) {
         this.ddd = ddd;
     }
 
-    public int getNum() {
+    public String getNum() {
         return num;
     }
 
-    public void setNum(int num) {
+    public void setNum(String num) {
         this.num = num;
     }
     

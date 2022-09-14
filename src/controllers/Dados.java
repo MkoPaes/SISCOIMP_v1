@@ -13,9 +13,8 @@ public class Dados {
     
     private Dados(){
         this.user = Database.readObjFromFile(new User());
-        this.hasUser = user != null;
-        this.hasAgendamentos = readArray(this.listaAgendamentos, new Agendamento());
-        this.hasProfissionais = readArray(this.listaProfissionais, new Profissional());
+        readArray(this.listaAgendamentos, new Agendamento());
+        readArray(this.listaProfissionais, new Profissional());
     }
 
     public static synchronized Dados getInstance(){
@@ -29,10 +28,6 @@ public class Dados {
     
     ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
     ArrayList<Profissional> listaProfissionais = new ArrayList<>();
-
-    boolean hasUser = false;
-    boolean hasAgendamentos = false;
-    boolean hasProfissionais = false;
 
     
     /**
@@ -83,11 +78,11 @@ public class Dados {
     }
     
     public boolean HasAgendamentos(){
-        return hasAgendamentos;
+        return !listaAgendamentos.isEmpty();
     }
     
     public boolean HasProfissionais(){
-        return hasProfissionais;
+        return !listaProfissionais.isEmpty();
     }
 
     public User getUser(){
@@ -103,7 +98,14 @@ public class Dados {
     public ArrayList<Agendamento> getListaAgendamentos(){
         return listaAgendamentos;
     }
+    public void addListaAgendamentos(Agendamento a){
+        listaAgendamentos.add(a);
+    }
+
     public ArrayList<Profissional> getListaProfissionais(){
         return listaProfissionais;
+    }
+    public void addListaProfissionais(Profissional p){
+        listaProfissionais.add(p);
     }
 }

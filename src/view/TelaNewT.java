@@ -1,5 +1,8 @@
 package view;
 
+import controllers.Dados;
+import model.Telefone;
+
 public class TelaNewT extends javax.swing.JDialog {
 
     // Construtor
@@ -87,6 +90,7 @@ public class TelaNewT extends javax.swing.JDialog {
             telaW.setVisible(true);
         } else {    
             // Aqui vai o código para salvar de fato
+            Dados.getInstance().getUser().addTel(new Telefone(txtFDDD.getText(), txtFTel.getText()));
             this.dispose();
         }
     }//GEN-LAST:event_btnAddActionPerformed

@@ -1,5 +1,9 @@
 package view;
 
+import controllers.Dados;
+import model.Familiar;
+import model.Telefone;
+
 public class TelaNewF extends javax.swing.JDialog {
 
     // Construtor
@@ -127,6 +131,7 @@ public class TelaNewF extends javax.swing.JDialog {
             telaW.setVisible(true);
         } else {
             // Aqui vai o código para salvar de fato
+            Dados.getInstance().getUser().addFamiliares(new Familiar(txtNome.getText(), new Telefone(txtFDDD.getText(), txtFTel.getText())));
             this.dispose();
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed

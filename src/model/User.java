@@ -76,12 +76,20 @@ public class User implements Storeable{
         this.tel = tel;
     }
 
+    public void addTel(Telefone t){
+        this.tel.add(t);
+    }
+
     public ArrayList<Familiar> getFamiliares() {
         return familiares;
     }
 
     public void setFamiliares(ArrayList<Familiar> familiares) {
         this.familiares = familiares;
+    }
+
+    public void addFamiliares(Familiar familiar){
+        this.familiares.add(familiar);
     }
     
     public String getFileID(){
