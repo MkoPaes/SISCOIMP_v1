@@ -3,7 +3,11 @@ package model;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class User {
+import storage.Storeable;
+
+public class User implements Storeable{
+    private String fileID = "user";
+
     private String nome;
     private String endereco;
     private String email;
@@ -11,16 +15,18 @@ public class User {
     private BufferedImage foto;
     private ArrayList<Telefone> tel;
     private ArrayList<Familiar> familiares;
-    private static User uniqueInstance;
-    
-    
-    private User(){}
-    
-    // Padrão Singleton
-    public static synchronized User getInstance(){
-        if(uniqueInstance == null)
-            uniqueInstance = new User();
-        return uniqueInstance;
+
+    public User(){}
+
+    public User(String nome, String endereco, String email, String eInfo, BufferedImage foto, ArrayList<Telefone> tel,
+            ArrayList<Familiar> familiares) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.email = email;
+        this.eInfo = eInfo;
+        this.foto = foto;
+        this.tel = tel;
+        this.familiares = familiares;
     }
 
     public String getNome() {
@@ -79,4 +85,18 @@ public class User {
         this.familiares = familiares;
     }
     
+    public String getFileID(){
+        return fileID;
+    }
+
+    public void setUser(String nome, String endereco, String email, String eInfo, BufferedImage foto, ArrayList<Telefone> tel,
+            ArrayList<Familiar> familiares) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.email = email;
+        this.eInfo = eInfo;
+        this.foto = foto;
+        this.tel = tel;
+        this.familiares = familiares;
+    }
 }

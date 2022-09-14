@@ -2,11 +2,17 @@ package model;
 
 import java.awt.image.BufferedImage;
 
-public class Profissional {
+import storage.Storeable;
+
+public class Profissional implements Storeable{
+    private String fileID = "profissional";
+
     private String nome;
     private String endereco;
     private BufferedImage foto;
     private Telefone tel;
+
+    public Profissional(){}
     
     public Profissional(String nome, String endereco, BufferedImage foto, Telefone tel){
         this.nome = nome;
@@ -47,4 +53,7 @@ public class Profissional {
         this.tel = tel;
     }
     
+    public String getFileID(){
+        return fileID;
+    }
 }

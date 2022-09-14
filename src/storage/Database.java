@@ -7,29 +7,14 @@ import java.io.*;
  */
 public class Database{
 
-    private String savePath = "";
-
-    ///Singleton Pattern
-    private static Database instance;
-
-    private Database() {}
-
-    public static synchronized Database getInstance(){
-        if (instance == null){
-            instance = new Database();
-        }
-
-        return instance;
-    }
-
     /**
     * Save an Object in the file "fileName".
     * Return true on success, or false on error.
     */
-    public boolean writeObjToFile(Serializable obj, String fileName){
+    public static boolean writeObjToFile(Serializable obj, String fileName){
         try {
             /// Serializing 'obj'
-            FileOutputStream fileOut = new FileOutputStream(savePath+"/"+fileName);
+            FileOutputStream fileOut = new FileOutputStream(fileName);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
 
             objectOut.writeObject(obj);
@@ -49,11 +34,15 @@ public class Database{
      * Return the object readed from file "fileName".
      * Return null on error.
      */
-    public <T extends Serializable> T readObjFromFile(T obj, String fileName){
+    public static <T extends Serializable> T readObjFromFile(T obj, String fileName){
         
+        File f = new File(fileName);
+        
+        if(!f.exists()) return null;
+
         try {
             /// De-serializing 'obj'
-            FileInputStream fileIn = new FileInputStream(savePath+"/"+fileName);
+            FileInputStream fileIn = new FileInputStream(fileName);
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
             
             /// down-casting object
@@ -72,8 +61,8 @@ public class Database{
     * Save an Object in a file named = obj.getID().
     * Return true on success, or false on error.
     */
-    public boolean writeObjToFile(Storeable obj){
-        if(obj.getID() != null) return writeObjToFile(obj, obj.getID());
+    public static boolean writeObjToFile(Storeable obj){
+        if(obj.getFileID() != null) return writeObjToFile(obj, obj.getFileID());
         return false;
     }
 
@@ -82,8 +71,8 @@ public class Database{
      * Return the object readed from file on success.
      * Return null on error.
      */
-    public <T extends Storeable> T readObjFromFile(T obj){
-        if (obj.getID() != null) return readObjFromFile(obj, obj.getID());
+    public static <T extends Storeable> T readObjFromFile(T obj){
+        if (obj.getFileID() != null) return readObjFromFile(obj, obj.getFileID());
         return null;
     }
 }

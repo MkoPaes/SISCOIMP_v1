@@ -1,9 +1,16 @@
 package model;
 
-public class Agendamento {
+import storage.Storeable;
+
+public class Agendamento implements Storeable{
+    
+    private String fileID = "agendamento";
+    
     private String id;
     private Data data;
     private Resultado resultado;
+
+    public Agendamento(){}
 
     public Agendamento(String id, Data data) {
         this.id = id;
@@ -34,4 +41,7 @@ public class Agendamento {
         this.resultado = resultado;
     }
     
+    public String getFileID(){
+        return fileID;
+    }
 }

@@ -9,6 +9,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import controllers.Dados;
 import utils.ManipulaImagem;
 
 public class TelaNewUser extends javax.swing.JFrame {
@@ -325,6 +327,8 @@ public class TelaNewUser extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(TelaNewUser.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+            Dados.getInstance().setUser(txtNome.getText(), txtEndereco.getText(), txtEmail.getText(), txtAreaEmergencia.getText(), imagem, txtNum.getText(), familiares);
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
