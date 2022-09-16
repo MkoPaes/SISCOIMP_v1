@@ -1,17 +1,15 @@
 package view;
 
-import java.time.DayOfWeek;
-
 import controllers.Dados;
-import model.Familiar;
 
 public class TelaRmF extends javax.swing.JDialog {
+    int size;
 
     // Construtor
     public TelaRmF(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        int familiarArraySize = Dados.getInstance().getUser().getFamiliares().size();
-        initComponents(familiarArraySize);
+        size = Dados.getInstance().getUser().getFamiliares().size();
+        initComponents();
     }
 
     /**
@@ -21,7 +19,7 @@ public class TelaRmF extends javax.swing.JDialog {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents(int size) {
+    private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jcbFamiliar = new javax.swing.JComboBox<>();
@@ -36,7 +34,12 @@ public class TelaRmF extends javax.swing.JDialog {
         for (int i = 0; i < size; i++) {
             familiaresNomes[i] = Dados.getInstance().getUser().getFamiliares().get(i).getNome();
         }
-        jcbFamiliar.setModel(new javax.swing.DefaultComboBoxModel<>(familiaresNomes));
+
+        if(size > 0){
+            jcbFamiliar.setModel(new javax.swing.DefaultComboBoxModel<>(familiaresNomes));
+        }else{
+            jcbFamiliar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        }
 
         btnRemover.setText("Remover");
         btnRemover.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +88,7 @@ public class TelaRmF extends javax.swing.JDialog {
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
         
-        Dados.getInstance().removeUserFamiliar(jcbFamiliar.getSelectedIndex() - 1);
+        Dados.getInstance().removeUserFamiliar(jcbFamiliar.getSelectedIndex());
         this.dispose();
     }//GEN-LAST:event_btnRemoverActionPerformed
 

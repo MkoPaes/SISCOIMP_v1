@@ -1420,10 +1420,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //Atualiza lista de tel
         ArrayList<Telefone> telefones = Dados.getInstance().getUser().getTel();
         DefaultTableModel modelT = (DefaultTableModel) jtTel.getModel();
+
         for(int i = modelT.getRowCount(); i<telefones.size();i++){
             modelT.addRow(new Object[] {null, null});
         }
 
+        for(int i = modelT.getRowCount(); i>telefones.size();i--){
+            modelT.removeRow(i-1);
+        }
+
+        // Preencher tabela
         for (int i = 0; i < telefones.size(); i++) {
             String ddds= telefones.get(i).getDdd();
             String nums=telefones.get(i).getNum();
@@ -1432,12 +1438,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jtTel.setValueAt(nums, i, 1);
         }
 
-        //Atualiza lista de tel
+        //Atualiza lista de fam
         ArrayList<Familiar> familiares = Dados.getInstance().getUser().getFamiliares();
         DefaultTableModel modelF = (DefaultTableModel) jtF.getModel();
 
         for(int i = modelF.getRowCount(); i<familiares.size();i++){
             modelF.addRow(new Object[] {null, null});
+        }
+
+        for(int i = modelF.getRowCount(); i>familiares.size();i--){
+            modelF.removeRow(i-1);
         }
 
         for (int i = 0; i < familiares.size(); i++) {

@@ -3,10 +3,12 @@ package view;
 import controllers.Dados;
 
 public class TelaRmTel extends javax.swing.JDialog {
+    int size;
 
     // Construtor
     public TelaRmTel(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        size = Dados.getInstance().getUser().getTel().size();
         initComponents();
     }
 
@@ -27,7 +29,17 @@ public class TelaRmTel extends javax.swing.JDialog {
         setTitle("Remover telefone");
         setResizable(false);
 
-        jcbTel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        String telefones[] = new String[size];
+
+        for (int i = 0; i < size; i++) {
+            telefones[i] = Dados.getInstance().getUser().getTel().get(i).toString();
+        }
+
+        if(size > 0){
+            jcbTel.setModel(new javax.swing.DefaultComboBoxModel<>(telefones));
+        }else{
+            jcbTel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        }
 
         btnRemover.setText("Remover");
         btnRemover.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +92,7 @@ public class TelaRmTel extends javax.swing.JDialog {
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
         
-        Dados.getInstance().removeUserTel(jcbTel.getSelectedIndex() - 1);
+        Dados.getInstance().removeUserTel(jcbTel.getSelectedIndex());
         this.dispose();
     }//GEN-LAST:event_btnRemoverActionPerformed
 

@@ -81,14 +81,11 @@ public class User implements Storeable{
     }
 
     public void addTel(Telefone t){
-        // if(tel == null){
-        //     tel = new ArrayList<Telefone>();
-        // }
         tel.add(t);
     }
 
     public void removeTel(int index){
-        if((index > 0) && (index < this.tel.size())){
+        if((index >= 0) && (index < this.tel.size())){
             tel.remove(index);
         }
     }
@@ -106,7 +103,7 @@ public class User implements Storeable{
     }
 
     public void removeFamiliar(int index){
-        if((index > 0) && (index < this.familiares.size())){
+        if((index >= 0) && (index < this.familiares.size())){
             familiares.remove(index);
         }
     }

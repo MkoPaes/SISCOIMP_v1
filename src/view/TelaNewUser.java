@@ -307,8 +307,8 @@ public class TelaNewUser extends javax.swing.JDialog {
             File arquivo = fileChooser.getSelectedFile();
             try{
                 imagem = ManipulaImagem.setDimensao(arquivo.getAbsolutePath(), 150, 150);
-                txtFoto.setText(arquivo.getAbsolutePath());
                 lblIcon.setIcon(new ImageIcon(imagem));
+                txtFoto.setText(arquivo.getAbsolutePath());
             } catch (Exception ex){
 
             }

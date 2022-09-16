@@ -144,20 +144,25 @@ public class Dados {
         return SalvaUser();
     }
 
-    public void removeUserTel(int index){
+    public boolean removeUserTel(int index){
         if(hasUser()){
             user.removeTel(index);
+            return SalvaUser();
         }
+        return false;
     }
 
     public boolean addUserFamiliar(Familiar f){
         getUser().addFamiliares(f);
         return SalvaUser();
     }
-    public void removeUserFamiliar(int index){
+    public boolean removeUserFamiliar(int index){
         if(hasUser()){
             user.removeFamiliar(index);
+            return SalvaUser();
         }
+
+        return false;
     }
 
     public Object[] getAgendamentosArray(){
