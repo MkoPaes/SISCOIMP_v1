@@ -150,13 +150,16 @@ public class TelaNewE extends javax.swing.JDialog {
             try {
                 int horas[] = { 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23};
                 int mins[] = { 0, 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55};
-                Data data = new Data(Integer.parseInt(txtFData.getText(0, 2)), Integer.parseInt(txtFData.getText(4, 2)), Integer.parseInt(txtFData.getText(5, 4)), horas[jcbHora.getSelectedIndex()], mins[jcbMin.getSelectedIndex()]);
+                Data data = new Data(Integer.parseInt(txtFData.getText(0, 2)), Integer.parseInt(txtFData.getText(3, 2)), Integer.parseInt(txtFData.getText(6, 4)), horas[jcbHora.getSelectedIndex()], mins[jcbMin.getSelectedIndex()]);
                 
                 /*if(Dados.getInstance().agendamentoProximo(data)){
                     //existem agendamentos no mesmo dia
                 }*/
 
-                Dados.getInstance().addAgendamento(new Agendamento(data));
+                if(!Dados.getInstance().addAgendamento(new Agendamento(data))){
+                    TelaWarningAgendamento newWA = new TelaWarningAgendamento(new javax.swing.JFrame(), true);
+                    newWA.setVisible(true);
+                }
                 
             } catch (Exception e) {
                 e.printStackTrace();

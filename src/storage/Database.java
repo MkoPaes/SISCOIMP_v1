@@ -7,14 +7,19 @@ import java.io.*;
  */
 public class Database{
 
+    //Using File.separator instead of "/" for portability
+    static String defaultPath="."+ File.separator + "storage" + File.separator;
+
     /**
     * Save an Object in the file "fileName".
     * Return true on success, or false on error.
     */
     public static boolean writeObjToFile(Serializable obj, String fileName){
+        if(!checkPath(defaultPath)) return false;
+        
         try {
             /// Serializing 'obj'
-            FileOutputStream fileOut = new FileOutputStream(fileName);
+            FileOutputStream fileOut = new FileOutputStream(defaultPath+fileName);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
 
             objectOut.writeObject(obj);
@@ -35,14 +40,18 @@ public class Database{
      * Return null on error.
      */
     public static <T extends Serializable> T readObjFromFile(T obj, String fileName){
-        
-        File f = new File(fileName);
+        if(!checkPath(defaultPath)){
+            System.err.println("path: " + defaultPath +" could not be created.");
+            return null;
+        }
+        String filePath = defaultPath+fileName;
+        File f = new File(filePath);
         
         if(!f.exists()) return null;
 
         try {
             /// De-serializing 'obj'
-            FileInputStream fileIn = new FileInputStream(fileName);
+            FileInputStream fileIn = new FileInputStream(filePath);
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
             
             /// down-casting object
@@ -74,5 +83,18 @@ public class Database{
     public static <T extends Storeable> T readObjFromFile(T obj){
         if (obj.getFileID() != null) return readObjFromFile(obj, obj.getFileID());
         return null;
+    }
+
+    /**
+     * Check a path, create the folders if they don't already exist.
+     * Return True if the path exist or was sucessfully created,
+     * Return False if the creation failed.
+    */
+    private static boolean checkPath(String path){
+        File dir = new File(path);
+        if(!dir.exists()){
+            return dir.mkdirs();
+        }
+        return true;
     }
 }

@@ -8,6 +8,8 @@ import storage.*;
 
 public class Dados {
 
+    private User user = null;
+    
     ///Padrão Singleton
     private static Dados uniqueInstance;
     
@@ -24,7 +26,6 @@ public class Dados {
         return uniqueInstance;
     }
 
-    User user;
     
     ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
     ArrayList<Profissional> listaProfissionais = new ArrayList<>();
@@ -66,7 +67,7 @@ public class Dados {
     public boolean SalvaDados(){
         boolean success = true;
         
-        if(!Database.writeObjToFile(user)) success = false;
+        if(!SalvaUser()) success = false;
         if(!writeArray(listaAgendamentos)) success = false;
         if(!writeArray(listaProfissionais)) success = false;
 
@@ -75,7 +76,7 @@ public class Dados {
 
 
     public boolean SalvaUser(){
-        return Database.writeObjToFile(user);
+        return Database.writeObjToFile(getUser());
     }
 
     public boolean SalvaAgendamento(){
@@ -87,11 +88,11 @@ public class Dados {
     
     //getters
 
-    private User getUser(){
+    public User getUser(){
         if(!hasUser()){
-        user = new User();
+            this.user = new User();
         }
-        return user;
+        return this.user;
     }
 
     public boolean hasUser(){

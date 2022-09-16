@@ -26,4 +26,9 @@ public class Familiar implements Serializable{
     public void setTel(Telefone tel) {
         this.tel = tel;
     }
+
+    @Override
+    public String toString() {
+        return "Familiar [nome=" + nome + ", tel=" + tel + "]";
+    }
 }

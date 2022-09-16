@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import storage.Storeable;
 
 public class Profissional implements Storeable{
-    private String fileID = "storage/profissional";
+    private String fileID = "profissional";
 
     private String nome;
     private Endereco endereco;

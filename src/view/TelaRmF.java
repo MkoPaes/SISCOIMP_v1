@@ -1,13 +1,17 @@
 package view;
 
+import java.time.DayOfWeek;
+
 import controllers.Dados;
+import model.Familiar;
 
 public class TelaRmF extends javax.swing.JDialog {
 
     // Construtor
     public TelaRmF(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();
+        int familiarArraySize = Dados.getInstance().getUser().getFamiliares().size();
+        initComponents(familiarArraySize);
     }
 
     /**
@@ -17,7 +21,7 @@ public class TelaRmF extends javax.swing.JDialog {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents(int size) {
 
         jPanel1 = new javax.swing.JPanel();
         jcbFamiliar = new javax.swing.JComboBox<>();
@@ -27,7 +31,12 @@ public class TelaRmF extends javax.swing.JDialog {
         setTitle("Remover contato");
         setResizable(false);
 
-        jcbFamiliar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        String familiaresNomes[] = new String[size];
+
+        for (int i = 0; i < size; i++) {
+            familiaresNomes[i] = Dados.getInstance().getUser().getFamiliares().get(i).getNome();
+        }
+        jcbFamiliar.setModel(new javax.swing.DefaultComboBoxModel<>(familiaresNomes));
 
         btnRemover.setText("Remover");
         btnRemover.addActionListener(new java.awt.event.ActionListener() {

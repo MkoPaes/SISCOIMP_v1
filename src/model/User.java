@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import storage.Storeable;
 
 public class User implements Storeable{
-    private String fileID = "storage/user";
+    private String fileID = "user";
 
     private String nome;
     private Endereco endereco;
@@ -16,7 +16,10 @@ public class User implements Storeable{
     private ArrayList<Telefone> tel;
     private ArrayList<Familiar> familiares;
 
-    public User(){}
+    public User(){
+        this.tel = new ArrayList<Telefone>();
+        this.familiares = new ArrayList<Familiar>();
+    }
 
     public User(String nome, Endereco endereco, String email, String eInfo, BufferedImage foto) {
         this.nome = nome;
@@ -24,8 +27,9 @@ public class User implements Storeable{
         this.email = email;
         this.eInfo = eInfo;
         this.foto = foto;
-        tel = new ArrayList<Telefone>();
-        familiares = new ArrayList<Familiar>();
+        this.tel = new ArrayList<Telefone>();
+        this.familiares = new ArrayList<Familiar>();
+        System.out.println(tel.toString());
     }
 
     public String getNome() {
@@ -77,7 +81,10 @@ public class User implements Storeable{
     }
 
     public void addTel(Telefone t){
-        this.tel.add(t);
+        // if(tel == null){
+        //     tel = new ArrayList<Telefone>();
+        // }
+        tel.add(t);
     }
 
     public void removeTel(int index){
@@ -106,5 +113,11 @@ public class User implements Storeable{
     
     public String getFileID(){
         return fileID;
+    }
+
+    @Override
+    public String toString() {
+        return "User [eInfo=" + eInfo + ", email=" + email + ", endereco=" + endereco + ", familiares=" + familiares
+                + ", fileID=" + fileID + ", foto=" + foto + ", nome=" + nome + ", tel=" + tel + "]";
     }
 }
