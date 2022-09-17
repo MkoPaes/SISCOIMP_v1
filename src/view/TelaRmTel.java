@@ -91,7 +91,6 @@ public class TelaRmTel extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-        
         Dados.getInstance().removeUserTel(jcbTel.getSelectedIndex());
         this.dispose();
     }//GEN-LAST:event_btnRemoverActionPerformed
