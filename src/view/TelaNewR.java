@@ -8,6 +8,8 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import controllers.Dados;
+
 /**
  *
  * @author mkopa
@@ -46,7 +48,17 @@ public class TelaNewR extends javax.swing.JDialog {
 
         lblRef.setText("Referente");
 
-        jcRef.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        int aSize = Dados.getInstance().getAgendamentos().size();
+        if(aSize > 0){
+                String agendamentosStrings[] = new String[aSize];
+                for (int i = 0; i < aSize; i++) {
+                        agendamentosStrings[i] = Dados.getInstance().getAgendamento(i).getId().toString();
+                }
+                jcRef.setModel(new javax.swing.DefaultComboBoxModel<>(agendamentosStrings));
+        }else{
+            jcRef.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        }
+
 
         lblResultados.setText("Resultados");
 

@@ -16,16 +16,24 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.basic.BasicButtonUI;
 import javax.swing.table.DefaultTableModel;
 
+import model.Agendamento;
 import model.Endereco;
 import model.Familiar;
+import model.Profissional;
 import model.Telefone;
 import utils.ManipulaImagem;
 
 public class TelaPrincipal extends javax.swing.JFrame {
+    
+    Dados dados = Dados.getInstance();
+    
     CardLayout cardLayout = new CardLayout();
     CardLayout cardLayout2 = new CardLayout();
     BufferedImage imagem;
     BufferedImage imagemP;
+
+    int pSize;
+    int aSize;
 
     // Construtor
     public TelaPrincipal() {
@@ -1312,7 +1320,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEntrarActionPerformed
-        if (!Dados.getInstance().hasUser()) {
+        if (!dados.hasUser()) {
             TelaNewUser newUser = new TelaNewUser(new javax.swing.JFrame(), true);
             newUser.setVisible(true);
         } else {
@@ -1390,6 +1398,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             btnEditP.setEnabled(true);
 
             // Aqui vai o código para salvar de fato
+            dados.setProfissional(
+                jComboBox1.getSelectedIndex(), 
+                new Endereco(txtEnderecoP.getText(),txtNumP.getText()),
+                new Telefone(txtDDDP.getText(), txtTelP.getText())
+            );
         }
     }// GEN-LAST:event_btnSalvarPActionPerformed
 
@@ -1408,17 +1421,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtTelP.setBackground(Color.WHITE);
 
         btnEditP.setEnabled(false);
+
+        //atualiza dados do profissional na tela
+        showProfissional();
+
     }// GEN-LAST:event_btnEditPActionPerformed
 
     private void btnDadosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDadosActionPerformed
-        txtNome.setText(Dados.getInstance().getUser().getNome());
-        txtEmergencia.setText(Dados.getInstance().getUser().geteInfo());
-        txtEmail.setText(Dados.getInstance().getUser().getEmail());
-        txtNum.setText(Dados.getInstance().getUser().getEndereco().getNumero());
-        txtEndereco.setText(Dados.getInstance().getUser().getEndereco().getEndereco());
+        txtNome.setText(dados.getUser().getNome());
+        txtEmergencia.setText(dados.getUser().geteInfo());
+        txtEmail.setText(dados.getUser().getEmail());
+        txtNum.setText(dados.getUser().getEndereco().getNumero());
+        txtEndereco.setText(dados.getUser().getEndereco().getEndereco());
 
         //Atualiza lista de tel
-        ArrayList<Telefone> telefones = Dados.getInstance().getUser().getTel();
+        ArrayList<Telefone> telefones = dados.getUser().getTel();
         DefaultTableModel modelT = (DefaultTableModel) jtTel.getModel();
 
         for(int i = modelT.getRowCount(); i<telefones.size();i++){
@@ -1439,7 +1456,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
 
         //Atualiza lista de fam
-        ArrayList<Familiar> familiares = Dados.getInstance().getUser().getFamiliares();
+        ArrayList<Familiar> familiares = dados.getUser().getFamiliares();
         DefaultTableModel modelF = (DefaultTableModel) jtF.getModel();
 
         for(int i = modelF.getRowCount(); i<familiares.size();i++){
@@ -1465,16 +1482,69 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// GEN-LAST:event_btnDadosActionPerformed
 
     private void btnProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnProfissionaisActionPerformed
+        
+        //Profissionais combo box
+        pSize = dados.getProfissionaisArray().length;
+        if(pSize > 0){
+                String profissionaisStrings[] = new String[pSize];
+                for (int i = 0; i < pSize; i++) {
+                        profissionaisStrings[i] = dados.getProfissional(i).getNome();
+                }
+                jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(profissionaisStrings));
+        }
+        else{
+                jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        }
+        
+        showProfissional();
+        
         lblPagTitle.setText("Profissionais Cadastrados");
         cardLayout2.show(pnCards2, "cardP");
     }// GEN-LAST:event_btnProfissionaisActionPerformed
 
     private void btnAgendaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAgendaActionPerformed
+        //Atualiza lista de agendamentos
+        ArrayList<Agendamento> agendamentos = dados.getAgendamentos();
+        DefaultTableModel modelA = (DefaultTableModel) jTable1.getModel();
+
+        for(int i = modelA.getRowCount(); i < agendamentos.size(); i++){
+            modelA.addRow(new Object[] {null, null});
+        }
+
+        for(int i = modelA.getRowCount(); i > agendamentos.size(); i--){
+            modelA.removeRow(i-1);
+        }
+
+        for (int i = 0; i < agendamentos.size(); i++) {
+            String agendamentoID = agendamentos.get(i).getId().toString();
+            String agendamentoData = (
+                Integer.toString(agendamentos.get(i).getData().getDia())+ "/" +
+                Integer.toString(agendamentos.get(i).getData().getMes())+ "/" +
+                Integer.toString(agendamentos.get(i).getData().getAno())
+            );
+            String agendamentoHora = Integer.toString(agendamentos.get(i).getData().getHora()) + ":" + Integer.toString(agendamentos.get(i).getData().getMinuto());
+
+            if(i < agendamentos.size()){
+                jTable1.setValueAt(agendamentoID, i, 0);
+                jTable1.setValueAt(agendamentoData, i, 1);
+                jTable1.setValueAt(agendamentoHora, i, 2);
+            }
+        }
+        
         lblPagTitle.setText("Sua Agenda");
         cardLayout2.show(pnCards2, "cardA");
     }// GEN-LAST:event_btnAgendaActionPerformed
 
     private void btnResultadosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnResultadosActionPerformed
+        aSize = dados.getAgendamentos().size();
+        if(aSize > 0){
+                String agendamentosStrings[] = new String[aSize];
+                for (int i = 0; i < aSize; i++) {
+                        agendamentosStrings[i] = dados.getAgendamento(i).getId().toString();
+                }
+                jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(agendamentosStrings));
+        }
+        
         lblPagTitle.setText("Resultados");
         cardLayout2.show(pnCards2, "cardR");
     }// GEN-LAST:event_btnResultadosActionPerformed
@@ -1577,7 +1647,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             // Aqui vai o código para salvar de fato
 
-            Dados.getInstance().setUser(txtNome.getText(), new Endereco(txtEndereco.getText(), txtNum.getText()),
+            dados.setUser(txtNome.getText(), new Endereco(txtEndereco.getText(), txtNum.getText()),
                     txtEmail.getText(), txtEmergencia.getText());
         }
     }// GEN-LAST:event_btnSalvarActionPerformed
@@ -1647,6 +1717,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 new TelaPrincipal().setVisible(true);
             }
         });
+    }
+
+    void showProfissional(){
+        Profissional profissional =  dados.getProfissional(jComboBox1.getSelectedIndex());
+
+        if(profissional != null){
+                txtEnderecoP.setText(profissional.getEndereco().getEndereco());
+                txtNumP.setText(profissional.getEndereco().getNumero());
+                txtDDDP.setText(profissional.getTel().getDdd());
+                txtTelP.setText(profissional.getTel().getNum());
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

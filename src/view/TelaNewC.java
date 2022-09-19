@@ -40,7 +40,14 @@ public class TelaNewC extends javax.swing.JDialog {
 
         lblProfissional.setText("Profissional");
 
-        jcProfissional.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        int pSize = Dados.getInstance().getProfissionaisArray().length;
+        if(pSize > 0){
+                String profissionaisStrings[] = new String[pSize];
+                for (int i = 0; i < pSize; i++) {
+                        profissionaisStrings[i] = Dados.getInstance().getProfissional(i).getNome();
+                }
+                jcProfissional.setModel(new javax.swing.DefaultComboBoxModel<>(profissionaisStrings));
+        }
 
         lblData.setText("Data");
 
@@ -54,11 +61,9 @@ public class TelaNewC extends javax.swing.JDialog {
         });
 
         jcbHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hora", "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
-        jcbHora.setEnabled(false);
-
+        
         jcbMin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Min", "00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" }));
-        jcbMin.setEnabled(false);
-
+        
         txtFData.setForeground(new java.awt.Color(153, 153, 153));
         try {
             txtFData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -66,12 +71,22 @@ public class TelaNewC extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         txtFData.setToolTipText("");
-        txtFData.setEnabled(false);
         txtFData.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFDataFocusGained(evt);
             }
         });
+        
+        if(pSize > 0){
+            jcbHora.setEnabled(true);
+            jcbMin.setEnabled(true);
+            txtFData.setEnabled(true);
+        }
+        else{
+            jcbHora.setEnabled(false);
+            jcbMin.setEnabled(false);
+            txtFData.setEnabled(false);
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -136,11 +151,11 @@ public class TelaNewC extends javax.swing.JDialog {
 
     private void btnAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarActionPerformed
         TelaWarningBranco telaW = new TelaWarningBranco(new javax.swing.JFrame(), true);
-        if(txtFData.isEnabled() && txtFData.getText().equals("  /  /    "))
+        if(txtFData.getText().equals("  /  /    "))
             telaW.setVisible(true);
-        else if(jcbHora.isEnabled() && jcbHora.getSelectedIndex() == 0)
+        else if(jcbHora.getSelectedIndex() == 0)
             telaW.setVisible(true);
-        else if(jcbMin.isEnabled() && jcbMin.getSelectedIndex() == 0)
+        else if(jcbMin.getSelectedIndex() == 0)
             telaW.setVisible(true);
         else {
             // Aqui vai o código para Salvar de fato

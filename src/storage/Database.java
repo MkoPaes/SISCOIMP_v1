@@ -1,6 +1,7 @@
 package storage;
 
 import java.io.*;
+import java.nio.file.Files;
 
 /**
  * Database class. Used to store and load classes to disk.

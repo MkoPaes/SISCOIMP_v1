@@ -1,10 +1,20 @@
 package view;
 
+import controllers.Dados;
+import model.Agendamento;
+import model.Data;
+
 public class TelaEditAgenda extends javax.swing.JDialog {
+    int aSize;
 
     // Construtor
     public TelaEditAgenda(java.awt.Frame parent, boolean modal) {
+        
+        
         super(parent, modal);
+        
+        aSize = Dados.getInstance().getAgendamentos().size();
+        
         initComponents();
     }
 
@@ -36,7 +46,16 @@ public class TelaEditAgenda extends javax.swing.JDialog {
 
         lblAgendamento.setText("Agendamento");
 
-        jcbAgendamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        if(aSize > 0){
+                String agendamentosStrings[] = new String[aSize];
+                for (int i = 0; i < aSize; i++) {
+                        agendamentosStrings[i] = Dados.getInstance().getAgendamento(i).getId().toString();
+                }
+                jcbAgendamento.setModel(new javax.swing.DefaultComboBoxModel<>(agendamentosStrings));
+        }else{
+            jcbAgendamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        }
+
 
         jPanelInfos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -45,11 +64,9 @@ public class TelaEditAgenda extends javax.swing.JDialog {
         lblHora.setText("Horário");
 
         jcbHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hora", "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
-        jcbHora.setEnabled(false);
-
+        
         jcbMin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Min", "00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" }));
-        jcbMin.setEnabled(false);
-
+        
         txtFData.setForeground(new java.awt.Color(153, 153, 153));
         try {
             txtFData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -57,7 +74,6 @@ public class TelaEditAgenda extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         txtFData.setToolTipText("");
-        txtFData.setEnabled(false);
 
         javax.swing.GroupLayout jPanelInfosLayout = new javax.swing.GroupLayout(jPanelInfos);
         jPanelInfos.setLayout(jPanelInfosLayout);
@@ -92,15 +108,13 @@ public class TelaEditAgenda extends javax.swing.JDialog {
         );
 
         btnSalvar.setText("Salvar");
-        btnSalvar.setEnabled(false);
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
             }
         });
 
-        btnDesmarcar.setText("Desmarcar");
-        btnDesmarcar.setEnabled(false);
+        btnDesmarcar.setText("Selecionar");
         btnDesmarcar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDesmarcarActionPerformed(evt);
@@ -113,6 +127,21 @@ public class TelaEditAgenda extends javax.swing.JDialog {
                 btnCancelarActionPerformed(evt);
             }
         });
+
+        if(aSize > 0){
+            jcbHora.setEnabled(true);
+            jcbMin.setEnabled(true);
+            txtFData.setEnabled(true);
+            btnSalvar.setEnabled(true);
+            btnDesmarcar.setEnabled(true);
+        }
+        else{
+            jcbHora.setEnabled(false);
+            jcbMin.setEnabled(false);
+            txtFData.setEnabled(false);
+            btnSalvar.setEnabled(false);
+            btnDesmarcar.setEnabled(false);
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -178,12 +207,35 @@ public class TelaEditAgenda extends javax.swing.JDialog {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         TelaWarningBranco telaW = new TelaWarningBranco(new javax.swing.JFrame(), true);
-        if(txtFData.isEnabled() && txtFData.getText().equals("  /  /    "))
+
+        if(txtFData.getText().equals("  /  /    "))
             telaW.setVisible(true);
-        else if(jcbHora.isEnabled() && jcbHora.getSelectedIndex() == 0)
+        else if(jcbHora.getSelectedIndex() == 0)
             telaW.setVisible(true);
-        else if(jcbMin.isEnabled() && jcbMin.getSelectedIndex() == 0)
+        else if(jcbMin.getSelectedIndex() == 0)
             telaW.setVisible(true);
+        else{
+            try {
+                int horas[] = { 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23};
+                int mins[] = { 0, 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55};
+                Data data = new Data(Integer.parseInt(txtFData.getText(0, 2)), Integer.parseInt(txtFData.getText(3, 2)), Integer.parseInt(txtFData.getText(6, 4)), horas[jcbHora.getSelectedIndex()], mins[jcbMin.getSelectedIndex()]);
+                
+                /*if(Dados.getInstance().agendamentoProximo(data)){
+                    //existem agendamentos no mesmo dia
+                }*/
+
+                if(Dados.getInstance().agendamentoProximo(data)){
+                    TelaWarningAgendamento newWA = new TelaWarningAgendamento(new javax.swing.JFrame(), true);
+                    newWA.setVisible(true);
+                }else{
+                    Dados.getInstance().getAgendamento(jcbAgendamento.getSelectedIndex()).setData(data);
+                }
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            telaW.dispose();
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -191,7 +243,20 @@ public class TelaEditAgenda extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnDesmarcarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesmarcarActionPerformed
-       
+       if(aSize > 0){
+            Agendamento agendamento = Dados.getInstance().getAgendamento(jcbAgendamento.getSelectedIndex());
+            String agendamentoData = (
+                Integer.toString(agendamento.getData().getDia())+
+                Integer.toString(agendamento.getData().getMes())+
+                Integer.toString(agendamento.getData().getAno())
+            );
+            int horaIndex = (agendamento.getData().getHora() + 1) % 24;
+            int minIndex = ((agendamento.getData().getMinuto() / 5) + 1) % 13;
+
+            txtFData.setText(agendamentoData);
+            jcbHora.setSelectedIndex(horaIndex);
+            jcbMin.setSelectedIndex(minIndex);
+       }
     }//GEN-LAST:event_btnDesmarcarActionPerformed
 
     /**

@@ -165,8 +165,14 @@ public class Dados {
         return false;
     }
 
-    public Object[] getAgendamentosArray(){
-        return listaAgendamentos.toArray();
+    public ArrayList<Agendamento> getAgendamentos(){
+        return listaAgendamentos;
+    }
+    public Agendamento getAgendamento(int index){
+        if(index >= 0 && index < listaAgendamentos.size()){
+            return listaAgendamentos.get(index);
+        }
+        return null;
     }
     public boolean addAgendamento(Agendamento a){
         for (Agendamento ag : listaAgendamentos) {
@@ -197,6 +203,21 @@ public class Dados {
 
     public Object[] getProfissionaisArray(){
         return listaProfissionais.toArray();
+    }
+
+    public Profissional getProfissional(int index){
+        if(index >= 0 && index < listaProfissionais.size()){
+            return listaProfissionais.get(index);
+        }
+        return null;
+    }
+    public boolean setProfissional(int index, Endereco endereco, Telefone telefone){
+        if(index >= 0 && index < listaProfissionais.size()){
+            listaProfissionais.get(index).setEndereco(endereco);
+            listaProfissionais.get(index).setTel(telefone);
+            return SalvaProfissionais();
+        }
+        return false;
     }
     public void addProfissional(Profissional p){
         listaProfissionais.add(p);
