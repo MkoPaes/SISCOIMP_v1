@@ -47,6 +47,8 @@ public class TelaNewC extends javax.swing.JDialog {
                         profissionaisStrings[i] = Dados.getInstance().getProfissional(i).getNome();
                 }
                 jcProfissional.setModel(new javax.swing.DefaultComboBoxModel<>(profissionaisStrings));
+        }else{
+            jcProfissional.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
         }
 
         lblData.setText("Data");
